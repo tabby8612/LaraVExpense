@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ChevronsDown, ChevronsUp } from 'lucide-vue-next';
 
 defineProps({
@@ -10,7 +10,7 @@ defineProps({
         type: String,
         required: true,
     },
-    month: {
+    text: {
         type: String,
         required: true,
     },
@@ -35,7 +35,7 @@ defineProps({
             class="flex w-full flex-col gap-2 rounded-lg bg-gray-100 px-10 py-4"
         >
             <p class="text-2xl text-gray-500">{{ amount }}</p>
-            <p class="text-sm text-gray-600">This Month ({{ month }})</p>
+            <p class="text-sm text-gray-600">({{ text }})</p>
         </div>
     </section>
 </template>

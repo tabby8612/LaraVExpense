@@ -19,7 +19,7 @@ import MainLayout from '@/layouts/MainLayout.vue';
                         <Summary
                             variant="income"
                             amount="$5,000"
-                            month="March"
+                            text="March"
                         />
                     </div>
                     <div class="w-full px-3">
@@ -27,7 +27,7 @@ import MainLayout from '@/layouts/MainLayout.vue';
                         <Summary
                             variant="expense"
                             amount="$7,000"
-                            month="April"
+                            text="April"
                         />
                     </div>
                 </section>

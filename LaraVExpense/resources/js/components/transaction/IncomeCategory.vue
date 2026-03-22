@@ -51,7 +51,7 @@ const selectedCategory = computed(
                 v-model="selectedCategory"
             />
             <ComboboxTrigger>
-                <ChevronDown />
+                <ChevronDown class="h-3.5 w-3.5 text-black" />
             </ComboboxTrigger>
         </ComboboxAnchor>
 
@@ -69,7 +69,7 @@ const selectedCategory = computed(
                         :key="category.id"
                         :value="category.id"
                         @select="setSelectedID(category.id)"
-                        class="relative flex h-[25px] items-center rounded-[3px] pr-[35px] pl-[25px] text-sm leading-none text-black/50 select-none data-[disabled]:pointer-events-none data-[disabled]:text-gray-200 data-[highlighted]:bg-blue-200 data-[highlighted]:text-blue-700 data-[highlighted]:outline-none"
+                        class="relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[35px] text-sm leading-none text-black/50 data-[disabled]:pointer-events-none data-[highlighted]:bg-blue-200 data-[disabled]:text-gray-200 data-[highlighted]:text-blue-700 data-[highlighted]:outline-none"
                     >
                         <ComboboxItemIndicator
                             class="absolute left-0 inline-flex w-[25px] items-center justify-center"

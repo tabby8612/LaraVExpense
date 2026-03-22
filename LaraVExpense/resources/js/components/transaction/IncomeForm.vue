@@ -65,8 +65,10 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
                 </div>
             </div>
             <div class="mt-3 flex flex-col justify-between gap-0">
-                <Label for="account" class="my-3 text-gray-500"> Note </Label>
+                <Label for="note" class="my-3 text-gray-500"> Note </Label>
                 <textarea
+                    id="note"
+                    name="note"
                     class="rounded-lg border border-gray-300 px-2 py-3 text-sm shadow"
                     rows="3"
                 />
