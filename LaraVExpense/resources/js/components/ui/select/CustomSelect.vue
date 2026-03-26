@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Option } from '@/types/dashboard';
+import { Option, Tag } from '@/types/dashboard';
 import { Check, ChevronDown, ChevronUp } from 'lucide-vue-next'
 import {
   SelectContent,
@@ -21,17 +21,20 @@ import { ref } from 'vue'
 
 interface Props {
     label: string;
-    options: Option[];
+    name: string;
+    options: Option[] | Tag[];
+    isMultiple?: boolean;
 }
 
-defineProps<Props>();
+const {isMultiple = false} = defineProps<Props>();
 
-const selectedOption = ref()
+const selectedOption = isMultiple ? ref<Tag[]>([]) : ref();
+
 
 </script>
 
 <template>
-  <SelectRoot v-model="selectedOption" class="w-full">
+  <SelectRoot v-model="selectedOption" class="w-full" :name="name" :multiple="isMultiple">
     <SelectTrigger
       class="inline-flex relative min-w-[160px] w-full items-center justify-between rounded-lg px-[15px] text-sm leading-none h-[35px] gap-[5px] hover:bg-blue-50 border shadow-sm focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-black outline-none"
       aria-label="Customise options"
@@ -73,4 +76,25 @@ const selectedOption = ref()
       </SelectContent>
     </SelectPortal>
   </SelectRoot>
+
+  <!-- For multiple -->
+<template v-if="isMultiple">    
+  <input    
+    v-for="val in selectedOption"
+    :key="val"
+    type="hidden"
+    :name="name"
+    :value="val"
+  />
+  
+</template>
+
+<!-- For single -->
+<template v-else>
+  <input
+    type="hidden"
+    :name="name"
+    :value="selectedOption"
+  />
+</template>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="TData, TValue">
-import type { ColumnDef, SortingState } from '@tanstack/vue-table'
+import type { ColumnDef, PaginationState, SortingState } from '@tanstack/vue-table'
 import { valueUpdater } from '@/components/ui/table/utils'
 
 import {
@@ -21,20 +21,28 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { ref } from 'vue';
-import { Payment } from '../../../../data/CustomData';
+import { Budget, Transaction } from '@/types/dashboard';
+import Button from '../button/Button.vue';
+import CustomPieChart from '@/components/charts/CustomPieChart.vue';
+import CircularProgress from '@/components/CircularProgress.vue';
 
-const props = defineProps<{
+const {columns, data, expandedType='transaction'} = defineProps<{
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  expandedType?: 'transaction' | 'budget'
 }>();
 
 const sorting = ref<SortingState>([]);
-const expanded = ref<ExpandedState>({})
+const expanded = ref<ExpandedState>({});
+const pagination = ref<PaginationState>({
+  pageIndex: 0,
+  pageSize: 10,
+});
 
 
 const table = useVueTable({
-  get data() { return props.data },
-  get columns() { return props.columns },
+  get data() { return data },
+  get columns() { return columns },
   getCoreRowModel: getCoreRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
   getSortedRowModel: getSortedRowModel(),
@@ -47,9 +55,25 @@ const table = useVueTable({
   state: {
     get sorting() { return sorting.value },
     get expanded() { return expanded.value },
+    get pagination() {return pagination.value}
   },
 
-})
+});
+
+
+const goToPageNumber = ref(pagination.value.pageIndex + 1);
+const pageSizes = [10,20,30,40,50];
+
+function handleGoToPage(e: any) {
+  const page = e.target.value ? Number(e.target.value) - 1 : 0
+  goToPageNumber.value = page + 1
+  table.setPageIndex(page)
+}
+
+function handlePageSizeChange(e: any) {
+  pagination.value.pageSize = Number(e.target.value);  
+  table.setPageSize(Number(e.target.value))
+}
 
 </script>
 
@@ -74,7 +98,7 @@ const table = useVueTable({
                     <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
                 </TableCell>
             </TableRow>
-            <TableRow v-if="row.getIsExpanded()" class="bg-blue-50 hover:bg-blue-50">
+            <TableRow v-if="row.getIsExpanded() && expandedType === 'transaction'" class="bg-blue-50 hover:bg-blue-50">
               <TableCell :colspan="row.getAllCells().length" >
                   <table class="w-full">
                     <thead>
@@ -88,14 +112,43 @@ const table = useVueTable({
                     </thead>
                     <tbody>
                       <tr class="text-center">
-                        <td>{{ (row.original as Payment).reference }}</td>
-                        <td>{{ (row.original as Payment).category }}</td>
-                        <td>{{ (row.original as Payment).subCategory }}</td>
-                        <td>{{ (row.original as Payment).note }}</td>
-                        <td>{{ (row.original as Payment).createdBy }}</td>
+                        <td>{{ (row.original as Transaction).reference }}</td>
+                        <td>{{ (row.original as Transaction).category }}</td>
+                        <td>{{ (row.original as Transaction).subCategory }}</td>
+                        <td>{{ (row.original as Transaction).note }}</td>
+                        <td>{{ (row.original as Transaction).createdBy }}</td>
                       </tr>
                     </tbody>
                   </table>
+              </TableCell>
+            </TableRow>
+            <TableRow v-if="row.getIsExpanded() && expandedType === 'budget'" class="bg-blue-50 hover:bg-blue-50">
+              <TableCell :colspan="row.getAllCells().length" >
+                  <section class="flex justify-between items-center p-5 w-10/12 mx-auto">
+                    <div class="flex flex-col gap-5">
+                      <div>
+                        <h1 class="text-lg font-bold">Budget Remaining</h1>
+                        {{ (row.original as Budget).remainingAmount }}
+                      </div>
+                      <div class="flex justify-between items-center gap-6">
+                        <div>
+                          <h1 class="text-blue-500 font-bold">Planned Amount</h1>
+                          <p>{{ (row.original as Budget).plannedAmount }}</p>
+                        </div>
+                        <div>
+                          <h1 class="text-green-500 font-bold">Spend Amount</h1>
+                          <p>{{ (row.original as Budget).spendAmount }}</p>
+                        </div>
+                        
+                        <div></div>
+
+                      </div>
+                    </div>
+                    <div class="h-56">
+                      <CircularProgress label="Spend Percentage" :percent="((row.original as Budget).spendAmount / (row.original as Budget).plannedAmount) * 100" />
+                      
+                    </div>
+                  </section>
               </TableCell>
             </TableRow>
           </template>
@@ -110,7 +163,25 @@ const table = useVueTable({
       </TableBody>
     </Table>
   </div>
-  <div class="flex items-center justify-end py-4 space-x-2">
+  <div class="flex justify-between">
+    <div>
+      <select
+          :value="table.getState().pagination.pageSize"
+          class="border rounded p-2 border-gray-400"
+          @change="handlePageSizeChange"
+        >
+          <option
+            :key="pageSize"
+            :value="pageSize"
+            v-for="pageSize in pageSizes"
+            :selected="pageSize === pagination.pageSize"
+          >
+            Show {{ pageSize }}
+          </option>
+        </select>
+    </div>
+    <div>
+      <div class="flex items-center justify-end py-4">
       <Button
         variant="outline"
         size="sm"
@@ -122,10 +193,24 @@ const table = useVueTable({
       <Button
         variant="outline"
         size="sm"
+        v-for="pageInd in table.getPageOptions()"
+        :class="`${pageInd === pagination.pageIndex && 'bg-blue-600 text-white'}`"
+        :value=pageInd
+        @click="handleGoToPage"
+      >
+        {{pageInd + 1}}
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
         :disabled="!table.getCanNextPage()"
         @click="table.nextPage()"
       >
         Next
       </Button>
     </div>
+
+    </div>
+  </div>
+  
 </template>

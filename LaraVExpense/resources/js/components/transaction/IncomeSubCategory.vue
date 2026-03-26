@@ -41,7 +41,7 @@ const selectedCategory = computed(
 </script>
 
 <template>
-    <ComboboxRoot class="relative w-full" required>
+    <ComboboxRoot class="relative w-full" required name="subCategory">
         <ComboboxAnchor
             class="inline-flex h-[35px] w-full min-w-[160px] items-center justify-between gap-[5px] rounded-lg border bg-white px-[15px] text-xs leading-none text-blue-700 shadow-sm outline-none hover:bg-stone-50 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-blue-700"
         >
@@ -56,7 +56,7 @@ const selectedCategory = computed(
         </ComboboxAnchor>
 
         <ComboboxContent
-            class="data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade absolute z-10 mt-1 w-full overflow-hidden rounded-lg border bg-white shadow-sm will-change-[opacity,transform]"
+            class="absolute z-10 mt-1 w-full overflow-hidden rounded-lg border bg-white shadow-sm will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade"
         >
             <ComboboxViewport class="p-[5px]">
                 <ComboboxEmpty
@@ -69,7 +69,7 @@ const selectedCategory = computed(
                         :key="category.id"
                         :value="category.id"
                         @select="setSelectedID(category.id)"
-                        class="relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[35px] text-sm leading-none text-black/50 data-[disabled]:pointer-events-none data-[highlighted]:bg-blue-200 data-[disabled]:text-gray-200 data-[highlighted]:text-blue-700 data-[highlighted]:outline-none"
+                        class="relative flex h-[25px] items-center rounded-[3px] pr-[35px] pl-[25px] text-sm leading-none text-black/50 select-none data-[disabled]:pointer-events-none data-[disabled]:text-gray-200 data-[highlighted]:bg-blue-200 data-[highlighted]:text-blue-700 data-[highlighted]:outline-none"
                     >
                         <ComboboxItemIndicator
                             class="absolute left-0 inline-flex w-[25px] items-center justify-center"

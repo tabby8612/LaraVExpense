@@ -1,6 +1,10 @@
 import type {
+    Account,
+    Budget,
+    Goal,
     Option,
     RecurringTransaction,
+    Tag,
     Transaction,
 } from '@/types/dashboard';
 
@@ -62,6 +66,7 @@ export const transactions = {
 export const payments: Transaction[] = [
     {
         id: '728ed52a',
+        type: 'income',
         name: 'salary',
         amount: 23000,
         date: '11/03/2026',
@@ -74,6 +79,7 @@ export const payments: Transaction[] = [
     },
     {
         id: '728ed52b',
+        type: 'income',
         name: 'income',
         amount: 24000,
         date: '11/04/2026',
@@ -86,6 +92,7 @@ export const payments: Transaction[] = [
     },
     {
         id: '728ed52c',
+        type: 'income',
         name: 'business',
         amount: 25000,
         date: '22/05/2026',
@@ -98,6 +105,7 @@ export const payments: Transaction[] = [
     },
     {
         id: '728ed52d',
+        type: 'income',
         name: 'salary',
         amount: 23000,
         date: '22/06/2026',
@@ -110,6 +118,7 @@ export const payments: Transaction[] = [
     },
     {
         id: '728ed52e',
+        type: 'income',
         name: 'salary',
         amount: 23000,
         date: '22/07/2026',
@@ -201,3 +210,499 @@ export const accounts: Option[] = [
         name: 'Mashreq',
     },
 ];
+
+export const recurringType: Option[] = [
+    {
+        id: 1,
+        name: 'Daily',
+    },
+    {
+        id: 2,
+        name: 'Weekly',
+    },
+    {
+        id: 3,
+        name: 'Monthly',
+    },
+    {
+        id: 4,
+        name: 'Yearly',
+    },
+];
+
+export const tags: Tag[] = [
+    {
+        id: 1,
+        name: 'Tag1',
+        color: 'red',
+        usageCount: 5,
+    },
+    {
+        id: 2,
+        name: 'Tag2',
+        color: 'blue',
+        usageCount: 9,
+    },
+    {
+        id: 3,
+        name: 'Unpaid',
+        color: 'orange',
+        usageCount: 10,
+    },
+];
+
+export const allAccounts: Account[] = [
+    {
+        id: '1',
+        name: 'UBL',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '2',
+        name: 'UBL2',
+        openingBalance: '15000',
+        description: 'saving account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '3',
+        name: 'UBL3',
+        openingBalance: '27000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '4',
+        name: 'UBL4',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '5',
+        name: 'UBL5',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '6',
+        name: 'UBL6',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '7',
+        name: 'UBL7',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '8',
+        name: 'UBL8',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '9',
+        name: 'UBL9',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '10',
+        name: 'UBL10',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '11',
+        name: 'UBL11',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '12',
+        name: 'UBL12',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '13',
+        name: 'UBL13',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '14',
+        name: 'UBL14',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+    {
+        id: '15',
+        name: 'UBL15',
+        openingBalance: '15000',
+        description: 'current account',
+        accountNumber: '507363261',
+    },
+];
+
+export const accountTransactions: Transaction[] = [
+    {
+        id: '1',
+        type: 'income',
+        category: 'Income',
+        createdBy: 'Tabish',
+        note: 'Abc',
+        reference: 'Abc125',
+        subCategory: 'Freelancer',
+        name: 'freelancer',
+        date: '2026-02-25',
+        account: 'Bank 2',
+        amount: 500,
+    },
+    {
+        id: '2',
+        type: 'income',
+        category: 'Income',
+        createdBy: 'Tabish',
+        note: 'Abc',
+        reference: 'Abc125',
+        subCategory: 'Fiverr',
+        name: 'fiverr',
+        date: '2026-02-24',
+        account: 'Bank 2',
+        amount: 500,
+    },
+    {
+        id: '3',
+        type: 'income',
+        category: 'Income',
+        createdBy: 'Tabish',
+        note: 'Abc',
+        reference: 'Abc125',
+        subCategory: 'Upwork',
+        name: 'Upwork',
+        date: '2026-02-18',
+        account: 'Bank 1',
+        amount: 300,
+    },
+    {
+        id: '4',
+        type: 'income',
+        category: 'Income',
+        createdBy: 'Tabish',
+        note: 'Abc',
+        reference: 'Abc125',
+        subCategory: 'Job',
+        name: 'Job',
+        date: '2026-02-10',
+        account: 'Bank 2',
+        amount: 200,
+    },
+
+    {
+        id: '5',
+        type: 'expense',
+        category: 'Expense',
+        createdBy: 'Tabish',
+        note: 'Abc',
+        reference: 'Abc125',
+        subCategory: 'Travelling',
+        name: 'motorcycle fuel',
+        date: '2026-02-05',
+        account: 'Bank 2',
+        amount: 5,
+    },
+    {
+        id: '6',
+        type: 'expense',
+        category: 'Expense',
+        createdBy: 'Tabish',
+        note: 'Abc',
+        reference: 'Abc125',
+        subCategory: 'Gromming',
+        name: 'haircut',
+        date: '2026-02-24',
+        account: 'Bank 2',
+        amount: 10,
+    },
+    {
+        id: '7',
+        type: 'expense',
+        category: 'Expense',
+        createdBy: 'Tabish',
+        note: 'Abc',
+        reference: 'Abc125',
+        subCategory: 'Health and Fitness',
+        name: 'gym',
+        date: '2026-02-10',
+        account: 'Bank 2',
+        amount: 10,
+    },
+    {
+        id: '8',
+        type: 'expense',
+        category: 'Income',
+        createdBy: 'Tabish',
+        note: 'Abc',
+        reference: 'Abc125',
+        subCategory: 'Food',
+        name: 'Chicken Tikka',
+        date: '2026-02-10',
+        account: 'Bank 2',
+        amount: 3,
+    },
+];
+
+export const budgets: Budget[] = [
+    {
+        id: '1',
+        category: 'Expense',
+        subCategory: 'Health',
+        month: 'jan',
+        year: '2025',
+        plannedAmount: 10000,
+        spendAmount: 2000,
+        remainingAmount: 8000,
+        description: 'improve health',
+        user: 'Tabish',
+    },
+    {
+        id: '2',
+        category: 'Expense',
+        subCategory: 'Health',
+        month: 'jan',
+        year: '2026',
+        plannedAmount: 10000,
+        spendAmount: 2000,
+        remainingAmount: 8000,
+        description: 'improve health',
+        user: 'Tabish',
+    },
+    {
+        id: '3',
+        category: 'Expense',
+        subCategory: 'Grooming',
+        month: 'jan',
+        year: '2026',
+        plannedAmount: 2000,
+        spendAmount: 500,
+        remainingAmount: 1500,
+        description: 'improve grooming',
+        user: 'Tabish',
+    },
+    {
+        id: '4',
+        category: 'Expense',
+        subCategory: 'Fees',
+        month: 'jan',
+        year: '2025',
+        plannedAmount: 3000,
+        spendAmount: 3000,
+        remainingAmount: 0,
+        description: 'pay fees',
+        user: 'Tabish',
+    },
+    {
+        id: '5',
+        category: 'Expense',
+        subCategory: 'Health',
+        month: 'jan',
+        year: '2025',
+        plannedAmount: 5000,
+        spendAmount: 5500,
+        remainingAmount: -500,
+        description: 'nutrition supplement',
+        user: 'Tabish',
+    },
+];
+
+export const months: Option[] = [
+    {
+        id: 1,
+        name: 'Jan',
+    },
+    {
+        id: 2,
+        name: 'Feb',
+    },
+    {
+        id: 3,
+        name: 'Mar',
+    },
+    {
+        id: 4,
+        name: 'Apr',
+    },
+    {
+        id: 5,
+        name: 'May',
+    },
+    {
+        id: 6,
+        name: 'Jun',
+    },
+    {
+        id: 7,
+        name: 'Jul',
+    },
+    {
+        id: 8,
+        name: 'Aug',
+    },
+    {
+        id: 9,
+        name: 'Sep',
+    },
+    {
+        id: 10,
+        name: 'Oct',
+    },
+    {
+        id: 11,
+        name: 'Nov',
+    },
+    {
+        id: 12,
+        name: 'Dec',
+    },
+];
+
+export const years: Option[] = [
+    {
+        id: 1,
+        name: '2026',
+    },
+    {
+        id: 2,
+        name: '2027',
+    },
+    {
+        id: 3,
+        name: '2028',
+    },
+    {
+        id: 4,
+        name: '2029',
+    },
+    {
+        id: 5,
+        name: '2030',
+    },
+];
+
+export const goals: Goal[] = [
+    {
+        id: '1',
+        name: 'Laptop',
+        openingBalance: 150000,
+        target: 250000,
+        date: '24-04-2027',
+        isGoalReached: false,
+    },
+    {
+        id: '2',
+        name: 'Bike',
+        openingBalance: 20000,
+        target: 400000,
+        date: '24-03-2027',
+        isGoalReached: false,
+    },
+    {
+        id: '3',
+        name: 'RS32 Gaming Console',
+        openingBalance: 500,
+        target: 10000,
+        date: '24-09-2026',
+        isGoalReached: false,
+    },
+    {
+        id: '4',
+        name: 'Samsung Galaxy S9 Tablet',
+        openingBalance: 50000,
+        target: 150000,
+        date: '24-12-2026',
+        isGoalReached: false,
+    },
+    {
+        id: '5',
+        name: 'Gaming Laptop',
+        openingBalance: 9500,
+        target: 400000,
+        date: '24-03-2026',
+        isGoalReached: false,
+    },
+    {
+        id: '6',
+        name: 'ReMarkable Pro 2',
+        openingBalance: 250000,
+        target: 250000,
+        date: '24-10-2026',
+        isGoalReached: true,
+    },
+];
+
+let eventGuid = 0;
+const todayStr = new Date().toISOString().replace(/T.*$/, ''); // YYYY-MM-DD of today
+
+export const INITIAL_EVENTS = [
+    {
+        id: createEventId(),
+        title: 'All-day event',
+        start: todayStr,
+        type: 'income',
+        amount: '$500',
+    },
+    {
+        id: createEventId(),
+        title: 'Timed event',
+        start: todayStr,
+        type: 'expense',
+        amount: '$1000',
+    },
+    {
+        id: createEventId(),
+        title: 'income',
+        start: todayStr,
+        type: 'expense',
+        amount: '$100',
+    },
+    {
+        id: createEventId(),
+        title: 'salary',
+        start: '2026-03-28',
+        type: 'income',
+        amount: '$2500',
+    },
+    {
+        id: createEventId(),
+        title: 'bike expense',
+        start: '2026-04-01',
+        type: 'income',
+        amount: '$5000',
+    },
+    {
+        id: createEventId(),
+        title: 'game expense',
+        start: '2026-03-30',
+        type: 'expense',
+        amount: '$150',
+    },
+];
+
+export function createEventId() {
+    return String(eventGuid++);
+}

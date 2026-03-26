@@ -8,6 +8,7 @@ export type TransVariant = {
 
 export interface Transaction {
     id: string;
+    type: 'income' | 'expense';
     name: string;
     amount: number;
     date: string;
@@ -17,6 +18,23 @@ export interface Transaction {
     subCategory: string;
     note: string;
     createdBy: string;
+}
+
+export interface Goal {
+    id: string;
+    name: string;
+    openingBalance: number;
+    target: number;
+    date: string;
+    isGoalReached: boolean;
+}
+
+export interface Account {
+    id: string;
+    name: string;
+    openingBalance: string;
+    accountNumber: string;
+    description: string;
 }
 
 export interface RecurringTransaction {
@@ -30,5 +48,30 @@ export interface RecurringTransaction {
 
 export interface Option {
     id: number;
+    name: string;
+}
+
+export interface Tag {
+    id: number;
+    name: string;
+    color: string;
+    usageCount: number;
+}
+
+export interface Budget {
+    id: string;
+    user: string;
+    category: string;
+    subCategory: string;
+    plannedAmount: number;
+    spendAmount: number;
+    remainingAmount: number;
+    month: string;
+    year: string;
+    description: string;
+}
+
+export interface User {
+    id: string;
     name: string;
 }

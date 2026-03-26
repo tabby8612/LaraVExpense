@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronsDown, ChevronsUp } from 'lucide-vue-next';
+import { ChevronsDown, ChevronsUp, Wallet } from 'lucide-vue-next';
 
 defineProps({
     variant: {
@@ -20,7 +20,7 @@ defineProps({
 <template>
     <section class="flex">
         <div
-            :class="`flex items-center rounded px-3 ${variant === 'income' ? 'bg-income' : 'bg-expense'}`"
+            :class="`flex items-center rounded px-3 ${variant === 'income' && 'bg-income'} ${variant === 'expense' && 'bg-expense'} ${variant === 'balance' && 'bg-green-500'}`"
         >
             <ChevronsUp
                 class="size-16 text-white"
@@ -30,6 +30,7 @@ defineProps({
                 class="size-16 text-white"
                 v-if="variant === 'expense'"
             />
+            <Wallet class="size-16 text-white" v-if="variant === 'balance'" />
         </div>
         <div
             class="flex w-full flex-col gap-2 rounded-lg bg-gray-100 px-10 py-4"

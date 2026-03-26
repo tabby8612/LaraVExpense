@@ -17,7 +17,16 @@ Route::inertia('/upcoming-income', 'UpcomingIncome')->name('upcomingIncome');
 Route::inertia('/expenses', 'Expense')->name('expenses');
 Route::inertia('/upcoming-expense', 'UpcomingExpense')->name('upcomingExpense');
 Route::inertia('/recurring-transactions', 'RecurringTransaction')->name('recurringTransaction');
+Route::inertia('/accounts', 'Account')->name('accounts');
+Route::inertia('/account/detail/{id}', 'AccountDetail')->name('accountDetail');
+Route::inertia('/budget', 'Budget')->name('budget');
+Route::inertia('/set-goals', 'SetGoals')->name('goal');
+Route::inertia('/calendar', 'Calendar')->name('calendar');
 
+
+Route::post('/recurring-transactions', function (Request $request) {
+    dd($request->all());
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
