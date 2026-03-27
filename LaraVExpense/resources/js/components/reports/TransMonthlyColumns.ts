@@ -27,7 +27,7 @@ export const TransMonthlyColumns: ColumnDef<TransMonthly>[] = [
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center text-xs' },
+                { class: 'text-center text-xs font-black' },
                 `${row.getValue('category')}`,
             );
         },
@@ -303,7 +303,7 @@ export const TransMonthlyColumns: ColumnDef<TransMonthly>[] = [
                 Button as any,
                 {
                     variant: 'ghost',
-                    class: 'px-0 gap-0 has-[>svg]:p-0 flex justify-between items-center mx-auto hover:bg-transparent text-xs',
+                    class: `px-0 gap-0 has-[>svg]:p-0 flex justify-between items-center mx-auto hover:bg-transparent text-xs`,
                     onClick: () =>
                         column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
@@ -313,7 +313,9 @@ export const TransMonthlyColumns: ColumnDef<TransMonthly>[] = [
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center text-xs text-green-500 font-bold' },
+                {
+                    class: `text-center text-xs font-bold ${row.original.type === 'income' ? 'text-green-500' : 'text-red-500'}`,
+                },
                 row.getValue('total'),
             );
         },

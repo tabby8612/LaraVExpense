@@ -31,6 +31,7 @@ Route::prefix('reports')->group(function () {
     Route::inertia('upcomingincome', 'reports/UpcomingIncome')->name('upcomingIncome');
     Route::inertia('category', 'reports/Category')->name('category.report');
     Route::inertia('incomemonth', 'reports/IncomeMonth')->name('incomemonth.report');
+    Route::inertia('expensemonth', 'reports/ExpenseMonth')->name('expensemonth.report');
 });
 
 

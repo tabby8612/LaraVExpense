@@ -78,6 +78,7 @@ export interface User {
 
 export interface TransMonthly {
     category: string;
+    type: 'income' | 'expense';
     jan: string;
     feb: string;
     mar: string;
