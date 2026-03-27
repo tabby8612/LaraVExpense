@@ -8,15 +8,14 @@ import {
     DialogPortal,
     DialogRoot,
     DialogTitle,
-    DialogTrigger,
     Label,
 } from 'reka-ui';
 
 import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
-import CustomSelect from './ui/select/CustomSelect.vue';
 import { accounts, transactionTypes } from '../../data/CustomData';
-import IncomeSubCategory from './transaction/IncomeSubCategory.vue';
 import IncomeCategory from './transaction/IncomeCategory.vue';
+import IncomeSubCategory from './transaction/IncomeSubCategory.vue';
+import CustomSelect from './ui/select/CustomSelect.vue';
 
 const isOpen = defineModel<boolean>('isOpen', {
     default: false,

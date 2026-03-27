@@ -706,3 +706,79 @@ export const INITIAL_EVENTS = [
 export function createEventId() {
     return String(eventGuid++);
 }
+
+export const incomeChartData = {
+    labels: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+    ],
+    datasets: [
+        {
+            label: 'Income',
+            fill: true,
+            backgroundColor: 'rgba(65, 213, 226, 0.2)',
+            data: [40, 39, 10, 40, 39, 80, 40],
+            borderWidth: 2,
+            borderColor: '#41D5E2',
+            tension: 0.4, // optional smooth curve
+        },
+    ],
+};
+
+export const transChartData = {
+    labels: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+    ],
+    datasets: [
+        {
+            label: 'Income',
+            fill: true,
+            backgroundColor: 'rgba(65, 213, 226, 0.2)',
+            data: [40, 39, 10, 40, 39, 80, 40],
+            borderWidth: 2,
+            borderColor: '#41D5E2',
+            tension: 0.4, // optional smooth curve
+        },
+        {
+            label: 'expense',
+            fill: true,
+            backgroundColor: 'rgba(255, 99, 126, 0.2)',
+            data: [20, 10, 5, 30, 50, 50, 30],
+            borderWidth: 2,
+            borderColor: '#db2777',
+            tension: 0.4, // optional smooth curve
+        },
+    ],
+};
+
+export const incomeBarChartData = {
+    labels: ['CompanyA', 'CompanyB', 'CompanyC', 'CompanyD', 'CompanyE'],
+    datasets: [
+        {
+            label: 'Income by Category',
+            backgroundColor: 'rgba(65, 213, 226, 0.8)',
+            data: [40, 20, 12, 39, 10],
+        },
+    ],
+};

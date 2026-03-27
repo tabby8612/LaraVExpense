@@ -23,6 +23,14 @@ Route::inertia('/budget', 'Budget')->name('budget');
 Route::inertia('/set-goals', 'SetGoals')->name('goal');
 Route::inertia('/calendar', 'Calendar')->name('calendar');
 
+Route::prefix('reports')->group(function () {
+    Route::inertia('/allreports', 'AllReports')->name('allReports');
+    Route::inertia('income', 'reports/IncomeReport')->name('incomeReport');
+    Route::inertia('expense', 'reports/ExpenseReport')->name('expenseReport');
+    Route::inertia('incomevsexpense', 'reports/IncomeExpenseReport')->name('incomeExpenseReport');
+    Route::inertia('upcomingincome', 'reports/UpcomingIncome')->name('upcomingIncome');
+});
+
 
 Route::post('/recurring-transactions', function (Request $request) {
     dd($request->all());
