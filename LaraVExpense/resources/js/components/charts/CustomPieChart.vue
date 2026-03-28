@@ -1,6 +1,11 @@
 <template>
-    <!-- <Pie :data="data" :options="options" /> -->
-    <Pie :options="options" :data="data" />
+    <div class="mb-4 flex items-start justify-between" v-if="chartHeader">
+        <h2 class="text-lg font-bold">{{ chartHeader.chartTitle }}</h2>
+    </div>
+
+    <div class="h-75">
+        <Pie :options="options" :data="data" />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -14,6 +19,9 @@ const props = defineProps<{
     labels: string[];
     backgroundColors: string[];
     values: number[];
+    chartHeader?: {
+        chartTitle: string;
+    };
 }>();
 
 const data = reactive({

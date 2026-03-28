@@ -93,3 +93,15 @@ export interface TransMonthly {
     dec: string;
     total: string;
 }
+
+export interface TaggedTransaction {
+    id: string;
+    tag: string;
+    name: string;
+    category: string;
+    subCategory: string;
+    account: string;
+    amount: string;
+    date: string;
+    type: string;
+}

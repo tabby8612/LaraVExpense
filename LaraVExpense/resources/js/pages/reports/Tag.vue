@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3';
-import { Repeat, Search } from 'lucide-vue-next';
+import { PieChart, Repeat, Search } from 'lucide-vue-next';
 import BarChart from '@/components/charts/BarChart.vue';
 import LineChart from '@/components/charts/LineChart.vue';
-import { columns } from '@/components/transaction/Columns';
-import IncomeCategory from '@/components/transaction/IncomeCategory.vue';
-import IncomeSubCategory from '@/components/transaction/IncomeSubCategory.vue';
+import { TagsColumnsReport } from '@/components/reports/TagsColumnsReport';
 import Button from '@/components/ui/button/Button.vue';
 import DataTable from '@/components/ui/dataTable/DataTable.vue';
+import CustomSelect from '@/components/ui/select/CustomSelect.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 import {
     incomeBarChartData,
     incomeChartData,
-    payments,
+    tagBarChartData,
+    taggedTransactions,
+    tags,
+    transactionTypes,
 } from '../../../data/CustomData';
+import CustomPieChart from '@/components/charts/CustomPieChart.vue';
 
 const form = useForm({
     name: null,
@@ -27,16 +30,37 @@ const form = useForm({
 <template>
     <MainLayout page="reports">
         <section class="p-4">
-            <div class="my-3 rounded-lg border border-gray-200 p-4 shadow">
-                <div class="flex justify-between">
+            <div class="rounded-lg border border-gray-200 p-4 shadow">
+                <div class="mb-5 flex justify-between">
                     <h1
                         class="flex items-center justify-center text-lg font-bold"
                     >
-                        Upcoming Expense Report
+                        Tag Report
                     </h1>
                 </div>
                 <form>
-                    <section class="grid grid-cols-2 gap-5">
+                    <section class="grid grid-cols-3 gap-5">
+                        <div class="flex flex-col gap-1.5">
+                            <label for="name" class="text-xs text-gray-400"
+                                >Transaction Type</label
+                            >
+                            <CustomSelect
+                                label="Transaction Type"
+                                name="transaction_type"
+                                :options="transactionTypes"
+                            />
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label for="category" class="text-xs text-gray-400"
+                                >Tags</label
+                            >
+                            <CustomSelect
+                                label="Tags"
+                                name="tags"
+                                :options="tags"
+                                is-multiple
+                            />
+                        </div>
                         <div class="flex flex-col gap-1.5">
                             <label for="name" class="text-xs text-gray-400"
                                 >Name</label
@@ -45,21 +69,8 @@ const form = useForm({
                                 type="text"
                                 name="name"
                                 v-model="form.name"
-                                placeholder="Name"
                                 class="rounded border border-gray-300 px-2 py-1.5 text-sm focus-visible:outline-blue-300"
                             />
-                        </div>
-                        <div class="flex flex-col gap-1.5">
-                            <label for="category" class="text-xs text-gray-400"
-                                >Category</label
-                            >
-                            <IncomeCategory />
-                        </div>
-                        <div class="flex flex-col gap-1.5">
-                            <label for="category" class="text-xs text-gray-400"
-                                >Sub Category</label
-                            >
-                            <IncomeSubCategory />
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label for="from_date" class="text-xs text-gray-400"
@@ -110,23 +121,29 @@ const form = useForm({
                     <h1
                         class="flex items-center justify-center text-lg font-bold"
                     >
-                        Upcoming Expense Reports
+                        Tags Reports
                     </h1>
                 </div>
-                <DataTable :columns="columns" :data="payments" />
+                <DataTable
+                    :columns="TagsColumnsReport"
+                    :data="taggedTransactions"
+                />
             </div>
         </section>
         <section class="my-3 flex gap-5 p-4">
             <div
                 class="h-96 w-1/2 rounded-lg border border-gray-100 p-4 shadow"
             >
-                <LineChart
-                    :chart-data="incomeChartData"
+                <CustomPieChart
+                    :labels="['Tag1', 'Tag2', 'Tag3']"
+                    :background-colors="[
+                        'oklch(80.8% 0.114 19.571)',
+                        'oklch(87.9% 0.169 91.605)',
+                        'oklch(79.2% 0.209 151.711)',
+                    ]"
+                    :values="[55, 65, 75]"
                     :chart-header="{
-                        chartTitle: '12 Monthly Income Chart',
-                        chartType: 'income',
-                        text: 'in This Year',
-                        totalAmount: '$15,200',
+                        chartTitle: 'Tag Summary',
                     }"
                 />
             </div>
@@ -134,9 +151,9 @@ const form = useForm({
                 class="h-96 w-1/2 rounded-lg border border-gray-100 p-4 shadow"
             >
                 <BarChart
-                    :chart-data="incomeBarChartData"
+                    :chart-data="tagBarChartData"
                     :chart-header="{
-                        chartTitle: 'Upcoming Expense By Category',
+                        chartTitle: 'Tags By Month',
                     }"
                 />
             </div>

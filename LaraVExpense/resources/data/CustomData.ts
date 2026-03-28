@@ -5,6 +5,7 @@ import type {
     Option,
     RecurringTransaction,
     Tag,
+    TaggedTransaction,
     Transaction,
     TransMonthly,
 } from '@/types/dashboard';
@@ -783,6 +784,46 @@ export const incomeBarChartData = {
         },
     ],
 };
+
+export const tagBarChartData = {
+    labels: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+    ],
+    datasets: [
+        {
+            label: 'Category1',
+            backgroundColor: 'rgba(65, 213, 226, 0.8)',
+            data: [40, 20, 12, 39, 10],
+        },
+        {
+            label: 'Category2',
+            backgroundColor: 'rgba(120, 200, 126, 0.8)',
+            data: [20, 30, 22, 19, 20],
+        },
+        {
+            label: 'Category3',
+            backgroundColor: 'rgba(180, 223, 116, 0.8)',
+            data: [10, 15, 22, 49, 20],
+        },
+        {
+            label: 'Category4',
+            backgroundColor: 'rgba(100, 113, 116, 0.8)',
+            data: [20, 30, 22, 48, 50],
+        },
+    ],
+};
+
 export const BarChartData = {
     labels: [
         'Jan',
@@ -961,5 +1002,74 @@ export const ExpenseMonthlyData: TransMonthly[] = [
         nov: '$22,879',
         dec: '$23,879',
         total: '$203,879',
+    },
+];
+
+export const taggedTransactions: TaggedTransaction[] = [
+    {
+        id: '1',
+        tag: 'tag 1',
+        name: 'Test may 23',
+        category: 'Company C',
+        subCategory: 'ComC-BranchA',
+        account: 'SIH',
+        amount: '10000',
+        date: '15/05/2026',
+        type: 'Expense',
+    },
+    {
+        id: '2',
+        tag: 'tag 2',
+        name: 'Test may 23',
+        category: 'Company D',
+        subCategory: 'ComD-BranchA',
+        account: 'UBL',
+        amount: '20,000',
+        date: '25/05/2026',
+        type: 'Income',
+    },
+    {
+        id: '3',
+        tag: 'tag 2',
+        name: 'Test may 25',
+        category: 'Company D',
+        subCategory: 'ComD-BranchA',
+        account: 'UBL',
+        amount: '20000',
+        date: '15/04/2026',
+        type: 'Income',
+    },
+    {
+        id: '4',
+        tag: 'tag 3',
+        name: 'Test may 24',
+        category: 'Company A',
+        subCategory: 'ComA-BranchA',
+        account: 'AHL',
+        amount: '50000',
+        date: '15/05/2027',
+        type: 'Income',
+    },
+    {
+        id: '5',
+        tag: 'Unpaid',
+        name: 'Test may 20',
+        category: 'Company B',
+        subCategory: 'ComB-BranchA',
+        account: 'AHL',
+        amount: '55000',
+        date: '15/05/2026',
+        type: 'Income',
+    },
+    {
+        id: '6',
+        tag: 'tag 4',
+        name: 'Test may 20',
+        category: 'Company D',
+        subCategory: 'ComD-BranchA',
+        account: 'HIL',
+        amount: '60000',
+        date: '15/05/2026',
+        type: 'Expense',
     },
 ];
