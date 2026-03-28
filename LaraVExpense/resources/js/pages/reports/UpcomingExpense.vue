@@ -11,7 +11,13 @@ import {
     accounts,
     accountTransactions,
     incomeBarChartData,
+    incomeChartData,
+    payments,
 } from '../../../data/CustomData';
+import IncomeCategory from '@/components/transaction/IncomeCategory.vue';
+import IncomeSubCategory from '@/components/transaction/IncomeSubCategory.vue';
+import { columns } from '@/components/transaction/Columns';
+import LineChart from '@/components/charts/LineChart.vue';
 
 const form = useForm({
     name: null,
@@ -30,7 +36,7 @@ const form = useForm({
                     <h1
                         class="flex items-center justify-center text-lg font-bold"
                     >
-                        Account Transaction Reports
+                        Upcoming Expense Report
                     </h1>
                 </div>
                 <form>
@@ -49,13 +55,15 @@ const form = useForm({
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label for="category" class="text-xs text-gray-400"
-                                >Account</label
+                                >Category</label
                             >
-                            <CustomSelect
-                                label="Account"
-                                name="account"
-                                :options="accounts"
-                            />
+                            <IncomeCategory />
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label for="category" class="text-xs text-gray-400"
+                                >Sub Category</label
+                            >
+                            <IncomeSubCategory />
                         </div>
                         <div class="flex flex-col gap-1.5">
                             <label for="from_date" class="text-xs text-gray-400"
@@ -106,22 +114,34 @@ const form = useForm({
                     <h1
                         class="flex items-center justify-center text-lg font-bold"
                     >
-                        Account Transaction Reports
+                        Upcoming Expense Reports
                     </h1>
                 </div>
-                <DataTable
-                    :columns="AccountTransColumns"
-                    :data="accountTransactions"
-                />
+                <DataTable :columns="columns" :data="payments" />
             </div>
         </section>
         <section class="my-3 flex gap-5 p-4">
             <div
-                class="h-96 w-full rounded-lg border border-gray-100 p-4 shadow"
+                class="h-96 w-1/2 rounded-lg border border-gray-100 p-4 shadow"
+            >
+                <LineChart
+                    :chart-data="incomeChartData"
+                    :chart-header="{
+                        chartTitle: '12 Monthly Income Chart',
+                        chartType: 'income',
+                        text: 'in This Year',
+                        totalAmount: '$15,200',
+                    }"
+                />
+            </div>
+            <div
+                class="h-96 w-1/2 rounded-lg border border-gray-100 p-4 shadow"
             >
                 <BarChart
                     :chart-data="incomeBarChartData"
-                    :chart-header="{ chartTitle: 'Account Chart' }"
+                    :chart-header="{
+                        chartTitle: 'Upcoming Expense By Category',
+                    }"
                 />
             </div>
         </section>
