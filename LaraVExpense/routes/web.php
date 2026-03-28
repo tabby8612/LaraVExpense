@@ -22,6 +22,8 @@ Route::inertia('/account/detail/{id}', 'AccountDetail')->name('accountDetail');
 Route::inertia('/budget', 'Budget')->name('budget');
 Route::inertia('/set-goals', 'SetGoals')->name('goal');
 Route::inertia('/calendar', 'Calendar')->name('calendar');
+Route::inertia('/incomecategory', 'IncomeCategory')->name('incomeCategory');
+
 
 Route::prefix('reports')->group(function () {
     Route::inertia('/allreports', 'AllReports')->name('allReports');

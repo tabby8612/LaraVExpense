@@ -1,9 +1,11 @@
 import type {
     Account,
     Budget,
+    Category,
     Goal,
     Option,
     RecurringTransaction,
+    SubCategory,
     Tag,
     TaggedTransaction,
     Transaction,
@@ -1071,5 +1073,71 @@ export const taggedTransactions: TaggedTransaction[] = [
         amount: '60000',
         date: '15/05/2026',
         type: 'Expense',
+    },
+];
+
+export const categories: Category[] = [
+    {
+        id: '1',
+        name: 'Category A',
+        description: 'description for A',
+        color: 'red',
+    },
+    {
+        id: '2',
+        name: 'Category B',
+        description: 'description for B',
+        color: 'blue',
+    },
+    {
+        id: '3',
+        name: 'Category C',
+        description: 'description for C',
+        color: 'green',
+    },
+    {
+        id: '4',
+        name: 'Category D',
+        description: 'description for D',
+        color: 'orange',
+    },
+    {
+        id: '5',
+        name: 'Category E',
+        description: 'description for E',
+        color: 'pink',
+    },
+];
+
+export const subCategories: SubCategory[] = [
+    {
+        id: '1',
+        category: 'Category A',
+        subCategory: 'SubCategory for Category A',
+        description: 'this is description',
+    },
+    {
+        id: '2',
+        category: 'Category B',
+        subCategory: 'SubCategory for Category B',
+        description: 'this is description',
+    },
+    {
+        id: '3',
+        category: 'Category C',
+        subCategory: 'SubCategory for Category C',
+        description: 'this is description',
+    },
+    {
+        id: '4',
+        category: 'Category D',
+        subCategory: 'SubCategory for Category D',
+        description: 'this is description',
+    },
+    {
+        id: '5',
+        category: 'Category E',
+        subCategory: 'SubCategory for Category E',
+        description: 'this is description',
     },
 ];

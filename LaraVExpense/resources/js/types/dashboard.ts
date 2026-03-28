@@ -105,3 +105,22 @@ export interface TaggedTransaction {
     date: string;
     type: string;
 }
+
+export interface TabContent {
+    tabLabel: string;
+    tabValue: string;
+}
+
+export interface Category {
+    id: string;
+    name: string;
+    description: string;
+    color: string;
+}
+
+export interface SubCategory {
+    id: string;
+    category: string;
+    subCategory: string;
+    description: string;
+}

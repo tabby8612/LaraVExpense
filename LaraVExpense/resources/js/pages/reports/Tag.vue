@@ -1,22 +1,19 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3';
-import { PieChart, Repeat, Search } from 'lucide-vue-next';
+import { Repeat, Search } from 'lucide-vue-next';
 import BarChart from '@/components/charts/BarChart.vue';
-import LineChart from '@/components/charts/LineChart.vue';
+import CustomPieChart from '@/components/charts/CustomPieChart.vue';
 import { TagsColumnsReport } from '@/components/reports/TagsColumnsReport';
 import Button from '@/components/ui/button/Button.vue';
 import DataTable from '@/components/ui/dataTable/DataTable.vue';
 import CustomSelect from '@/components/ui/select/CustomSelect.vue';
 import MainLayout from '@/layouts/MainLayout.vue';
 import {
-    incomeBarChartData,
-    incomeChartData,
     tagBarChartData,
     taggedTransactions,
     tags,
     transactionTypes,
 } from '../../../data/CustomData';
-import CustomPieChart from '@/components/charts/CustomPieChart.vue';
 
 const form = useForm({
     name: null,
