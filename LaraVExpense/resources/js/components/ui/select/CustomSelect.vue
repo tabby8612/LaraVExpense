@@ -36,7 +36,7 @@ const selectedOption = isMultiple ? ref<Tag[]>([]) : ref();
 <template>
   <SelectRoot v-model="selectedOption" class="w-full" :name="name" :multiple="isMultiple">
     <SelectTrigger
-      class="inline-flex relative min-w-[160px] w-full items-center justify-between rounded-lg px-[15px] text-sm leading-none h-[35px] gap-[5px] hover:bg-blue-50 border shadow-sm focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-black outline-none"
+      class="inline-flex relative min-w-[160px] w-full items-center justify-between rounded-lg px-[15px] text-sm leading-none h-[35px] gap-[5px] hover:bg-blue-50 border shadow-sm focus:shadow-[0_0_0_2px] focus:shadow-blue-700 data-[placeholder]:text-black outline-none"
       aria-label="Customise options"
     >
       <SelectValue :placeholder="`Select a ${label}`" />

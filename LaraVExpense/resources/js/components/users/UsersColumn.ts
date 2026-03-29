@@ -4,12 +4,12 @@ import { ArrowUpDown } from 'lucide-vue-next';
 
 import { h } from 'vue';
 
-import type { SubCategory } from '@/types/dashboard';
+import type { User } from '@/types/dashboard';
 import Button from '../ui/button/Button.vue';
 
-export const incomeSubCategoryReportColumns: ColumnDef<SubCategory>[] = [
+export const UsersColumns: ColumnDef<User>[] = [
     {
-        accessorKey: 'id',
+        accessorKey: 'name',
         header: ({ column }) => {
             return h(
                 Button,
@@ -19,18 +19,19 @@ export const incomeSubCategoryReportColumns: ColumnDef<SubCategory>[] = [
                     onClick: () =>
                         column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => [
-                    'Sub Category ID',
-                    h(ArrowUpDown, { class: 'ml-2 h-4 w-4' }),
-                ],
+                () => ['Name', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center' }, `${row.getValue('id')}`);
+            return h(
+                'div',
+                { class: 'text-center' },
+                `${row.getValue('name')}`,
+            );
         },
     },
     {
-        accessorKey: 'category',
+        accessorKey: 'email',
         header: ({ column }) => {
             return h(
                 Button as any,
@@ -40,19 +41,19 @@ export const incomeSubCategoryReportColumns: ColumnDef<SubCategory>[] = [
                     onClick: () =>
                         column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => ['Category', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
+                () => ['Amount', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
             );
         },
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center ' },
-                row.getValue('category'),
+                { class: 'text-center' },
+                `${row.getValue('email')}`,
             );
         },
     },
     {
-        accessorKey: 'subCategory',
+        accessorKey: 'role',
         header: ({ column }) => {
             return h(
                 Button as any,
@@ -62,22 +63,15 @@ export const incomeSubCategoryReportColumns: ColumnDef<SubCategory>[] = [
                     onClick: () =>
                         column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => [
-                    'Sub Category',
-                    h(ArrowUpDown, { class: 'ml-2 h-4 w-4' }),
-                ],
+                () => ['Role', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
             );
         },
         cell: ({ row }) => {
-            return h(
-                'div',
-                { class: 'text-center ' },
-                row.getValue('subCategory'),
-            );
+            return h('div', { class: 'text-center ' }, row.getValue('role'));
         },
     },
     {
-        accessorKey: 'description',
+        accessorKey: 'phone',
         header: ({ column }) => {
             return h(
                 Button as any,
@@ -87,18 +81,29 @@ export const incomeSubCategoryReportColumns: ColumnDef<SubCategory>[] = [
                     onClick: () =>
                         column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => [
-                    'Description',
-                    h(ArrowUpDown, { class: 'ml-2 h-4 w-4' }),
-                ],
+                () => ['Phone', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
             );
         },
         cell: ({ row }) => {
+            return h('div', { class: 'text-center' }, row.getValue('phone'));
+        },
+    },
+    {
+        accessorKey: 'status',
+        header: ({ column }) => {
             return h(
-                'div',
-                { class: 'text-center ' },
-                row.getValue('description'),
+                Button as any,
+                {
+                    variant: 'ghost',
+                    class: 'flex justify-between items-center mx-auto hover:bg-transparent',
+                    onClick: () =>
+                        column.toggleSorting(column.getIsSorted() === 'asc'),
+                },
+                () => ['Status', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
             );
+        },
+        cell: ({ row }) => {
+            return h('div', { class: 'text-center' }, row.getValue('status'));
         },
     },
     {

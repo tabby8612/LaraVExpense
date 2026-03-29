@@ -56,6 +56,7 @@ export interface Tag {
     name: string;
     color: string;
     usageCount: number;
+    description?: string;
 }
 
 export interface Budget {
@@ -74,6 +75,10 @@ export interface Budget {
 export interface User {
     id: string;
     name: string;
+    email: string;
+    role: string;
+    phone: string;
+    status: string;
 }
 
 export interface TransMonthly {

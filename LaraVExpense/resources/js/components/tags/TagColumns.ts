@@ -4,10 +4,10 @@ import { ArrowUpDown } from 'lucide-vue-next';
 
 import { h } from 'vue';
 
-import type { Category } from '@/types/dashboard';
+import type { Tag } from '@/types/dashboard';
 import Button from '../ui/button/Button.vue';
 
-export const incomeCategoryReportColumns: ColumnDef<Category>[] = [
+export const TagColumns: ColumnDef<Tag>[] = [
     {
         accessorKey: 'name',
         header: ({ column }) => {
@@ -19,14 +19,46 @@ export const incomeCategoryReportColumns: ColumnDef<Category>[] = [
                     onClick: () =>
                         column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => ['Name', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
+                () => ['Tag Name', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
             );
         },
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center' },
+                { class: 'text-center font-bold' },
                 `${row.getValue('name')}`,
+            );
+        },
+    },
+    {
+        accessorKey: 'color',
+        header: () => {
+            return h(
+                Button as any,
+                {
+                    variant: 'ghost',
+                    class: 'flex justify-between items-center mx-auto hover:bg-transparent',
+                },
+                () => ['Tag Color'],
+            );
+        },
+        cell: ({ row }) => {
+            const color = row.getValue('color') as string;
+
+            return h(
+                'div',
+                {
+                    class: `size-5 rounded flex justify-center items-center mx-auto`,
+                    style: { backgroundColor: color },
+                },
+                h(
+                    'p',
+                    {
+                        class: 'px-3 py-1 rounded border border-gray-300 text-white text-xs font-bold',
+                        style: { backgroundColor: color },
+                    },
+                    `${row.getValue('name')}`,
+                ),
             );
         },
     },
@@ -34,7 +66,7 @@ export const incomeCategoryReportColumns: ColumnDef<Category>[] = [
         accessorKey: 'description',
         header: ({ column }) => {
             return h(
-                Button as any,
+                Button,
                 {
                     variant: 'ghost',
                     class: 'flex justify-between items-center mx-auto hover:bg-transparent',
@@ -50,42 +82,30 @@ export const incomeCategoryReportColumns: ColumnDef<Category>[] = [
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center ' },
-                row.getValue('description'),
+                { class: 'text-center' },
+                `${row.getValue('description') ?? ''}`,
             );
         },
     },
     {
-        accessorKey: 'color',
+        accessorKey: 'usageCount',
         header: ({ column }) => {
             return h(
-                Button as any,
+                Button,
                 {
                     variant: 'ghost',
                     class: 'flex justify-between items-center mx-auto hover:bg-transparent',
                     onClick: () =>
                         column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => ['Color', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
+                () => ['usageCount', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })],
             );
         },
         cell: ({ row }) => {
-            const color = row.getValue('color') as string;
-
             return h(
                 'div',
-                {
-                    class: `size-5 rounded flex justify-center items-center mx-auto`,
-                    style: { backgroundColor: color },
-                },
-                h(
-                    'span',
-                    {
-                        class: 'size-5 rounded border border-gray-300',
-                        style: { backgroundColor: color },
-                    },
-                    `${''}`,
-                ),
+                { class: 'text-center' },
+                `${row.getValue('usageCount')}`,
             );
         },
     },

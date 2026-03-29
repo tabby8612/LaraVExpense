@@ -10,6 +10,7 @@ import type {
     TaggedTransaction,
     Transaction,
     TransMonthly,
+    User,
 } from '@/types/dashboard';
 
 export const transactions = {
@@ -196,6 +197,7 @@ export const transactionTypes: Option[] = [
         name: 'Upcoming Expense',
     },
 ];
+
 export const accounts: Option[] = [
     {
         id: 1,
@@ -234,12 +236,34 @@ export const recurringType: Option[] = [
     },
 ];
 
+export const roles: Option[] = [
+    {
+        id: 1,
+        name: 'Administrator',
+    },
+    {
+        id: 2,
+        name: 'Staff',
+    },
+];
+export const userStatuses: Option[] = [
+    {
+        id: 1,
+        name: 'Active',
+    },
+    {
+        id: 2,
+        name: 'Inactive',
+    },
+];
+
 export const tags: Tag[] = [
     {
         id: 1,
         name: 'Tag1',
         color: 'red',
         usageCount: 5,
+        description: 'this is tag 1',
     },
     {
         id: 2,
@@ -252,6 +276,7 @@ export const tags: Tag[] = [
         name: 'Unpaid',
         color: 'orange',
         usageCount: 10,
+        description: 'this is tag 3',
     },
 ];
 
@@ -1139,5 +1164,153 @@ export const subCategories: SubCategory[] = [
         category: 'Category E',
         subCategory: 'SubCategory for Category E',
         description: 'this is description',
+    },
+];
+
+export const users: User[] = [
+    {
+        id: '1',
+        email: 'tabishsajwani@gmail.com',
+        name: 'Tabish',
+        phone: '03133933083',
+        role: 'administrator',
+        status: 'active',
+    },
+    {
+        id: '2',
+        email: 'tabsajwani@gmail.com',
+        name: 'Tabish Sajwani',
+        phone: '03133933088',
+        role: 'administrator',
+        status: 'active',
+    },
+    {
+        id: '3',
+        email: 'tabishsajwani@gmail.com',
+        name: 'Tabish',
+        phone: '03133933085',
+        role: 'administrator',
+        status: 'active',
+    },
+    {
+        id: '4',
+        email: 'tabishsajwani@gmail.com',
+        name: 'Tabish',
+        phone: '03133933089',
+        role: 'administrator',
+        status: 'active',
+    },
+];
+
+export const permisions: Option[] = [
+    {
+        id: 1,
+        name: 'transactions',
+    },
+    {
+        id: 2,
+        name: 'income',
+    },
+    {
+        id: 3,
+        name: 'expense',
+    },
+    {
+        id: 4,
+        name: 'accounts',
+    },
+    {
+        id: 5,
+        name: 'track budget',
+    },
+    {
+        id: 6,
+        name: 'set goals',
+    },
+    {
+        id: 7,
+        name: 'calendar',
+    },
+    {
+        id: 8,
+        name: 'income category',
+    },
+    {
+        id: 9,
+        name: 'expense category',
+    },
+    {
+        id: 10,
+        name: 'income reports',
+    },
+    {
+        id: 11,
+        name: 'expense reports',
+    },
+    {
+        id: 12,
+        name: 'income vs expense reports',
+    },
+    {
+        id: 13,
+        name: 'income monthly reports',
+    },
+];
+
+export const languages: Option[] = [
+    {
+        id: 1,
+        name: 'English',
+    },
+    {
+        id: 2,
+        name: 'Spanish',
+    },
+    {
+        id: 3,
+        name: 'Turkish',
+    },
+    {
+        id: 4,
+        name: 'French',
+    },
+];
+
+export const dateTypes: Option[] = [
+    {
+        id: 1,
+        name: 'd-m-Y',
+    },
+    {
+        id: 2,
+        name: 'm-d-Y',
+    },
+    {
+        id: 3,
+        name: 'Y-m-d',
+    },
+    {
+        id: 4,
+        name: 'd/m/Y',
+    },
+    {
+        id: 5,
+        name: 'm/d/Y',
+    },
+    {
+        id: 6,
+        name: 'Y/m/d',
+    },
+    {
+        id: 7,
+        name: 'd.m.Y',
+    },
+    {
+        id: 8,
+        name: 'm.d.Y',
+    },
+    {
+        id: 9,
+        name: 'Y.m.d',
     },
 ];

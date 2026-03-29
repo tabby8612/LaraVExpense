@@ -8,8 +8,8 @@ const props = defineProps({
     label: String,
     type: String,
     placeholder: String,
-    modelValue: String,
     required: Boolean,
+    modelValue: String,
     defaultValue: String
 });
 

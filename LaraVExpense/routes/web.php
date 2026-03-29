@@ -23,6 +23,9 @@ Route::inertia('/budget', 'Budget')->name('budget');
 Route::inertia('/set-goals', 'SetGoals')->name('goal');
 Route::inertia('/calendar', 'Calendar')->name('calendar');
 Route::inertia('/incomecategory', 'IncomeCategory')->name('incomeCategory');
+Route::inertia('/expensecategory', 'ExpenseCategory')->name('expenseCategory');
+Route::inertia('/tags', 'Tags')->name('tags');
+
 
 
 Route::prefix('reports')->group(function () {
@@ -37,6 +40,12 @@ Route::prefix('reports')->group(function () {
     Route::inertia('account', 'reports/Account')->name('account.report');
     Route::inertia('upcomingexpense', 'reports/UpcomingExpense')->name('upcomingexpense.report');
     Route::inertia('tag', 'reports/Tag')->name('tag.report');
+});
+
+Route::prefix('settings')->group(function () {
+    Route::inertia('profile', 'ProfileSetting')->name('ProfileSetting');
+    Route::inertia('allusers', 'Users')->name('allusers');
+    Route::inertia('application', 'Application')->name('application');
 });
 
 

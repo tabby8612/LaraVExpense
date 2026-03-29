@@ -15,7 +15,7 @@ import { categories, subCategories } from '../../data/CustomData';
 
 <template>
     <MainLayout page="category">
-        <section class="p-4 shadow">
+        <section class="p-6">
             <TabsRoot
                 class="flex flex-col rounded-lg border shadow-sm sm:w-75 md:w-full"
                 default-value="category"
