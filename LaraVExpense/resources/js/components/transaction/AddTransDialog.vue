@@ -45,7 +45,7 @@ const { variant = 'income' } = defineProps<TransVariant>();
                         required
                     />
 
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <LabelInput
                             id="amount"
                             label="Amount"
@@ -60,7 +60,7 @@ const { variant = 'income' } = defineProps<TransVariant>();
                             placeholder="Reference"
                         />
                     </div>
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <LabelInput
                             id="date"
                             label="Date"
@@ -68,7 +68,7 @@ const { variant = 'income' } = defineProps<TransVariant>();
                             required
                         />
                         <div class="w-full">
-                            <Label class="my-3 gap-0.5 text-gray-500"
+                            <Label class="my-1.5 gap-0.5 text-gray-500"
                                 ><span class="text-red-500">*</span
                                 >{{
                                     variant === 'income' ? 'Income' : 'Expense'
@@ -78,9 +78,9 @@ const { variant = 'income' } = defineProps<TransVariant>();
                             <IncomeCategory />
                         </div>
                     </div>
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <div class="w-1/2">
-                            <Label class="my-3 gap-0.5 text-gray-500"
+                            <Label class="my-1.5 gap-0.5 text-gray-500"
                                 ><span class="text-red-500">*</span
                                 >{{
                                     variant === 'income' ? 'Income' : 'Expense'
@@ -90,14 +90,14 @@ const { variant = 'income' } = defineProps<TransVariant>();
                             <IncomeSubCategory />
                         </div>
                     </div>
-                    <div class="mt-2 flex flex-col justify-between gap-1">
-                        <Label for="note" class="my-3 text-gray-500">
+                    <div class="mt-3 flex flex-col justify-between gap-1">
+                        <Label for="note" class="my-1.5 text-gray-500">
                             Note
                         </Label>
                         <textarea
                             id="note"
                             name="note"
-                            class="rounded-lg border border-gray-300 px-2 py-3 text-sm shadow"
+                            class="rounded-lg border border-gray-300 px-2 py-3 text-sm shadow focus-visible:outline-blue-700"
                             rows="2"
                         />
                     </div>

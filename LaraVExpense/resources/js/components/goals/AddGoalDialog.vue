@@ -29,7 +29,7 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
                 </DialogTitle>
                 <DialogDescription />
                 <Form action="/" method="POST">
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <LabelInput
                             id="name"
                             label="Name"
@@ -44,7 +44,7 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
                             placeholder="Opening Balance"
                         />
                     </div>
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <LabelInput
                             id="target"
                             label="Target"

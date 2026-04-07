@@ -28,7 +28,7 @@ import { payments } from '../../data/CustomData';
             <div class="mt-5 rounded-lg border border-gray-100 p-4 shadow">
                 <div class="flex justify-between">
                     <h1
-                        class="flex items-center justify-center text-2xl font-bold text-gray-500"
+                        class="flex items-center justify-center text-lg font-bold text-gray-500"
                     >
                         Upcoming Expense
                     </h1>

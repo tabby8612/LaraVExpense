@@ -49,7 +49,7 @@ defineProps({
             />
         </div>
         <div
-            class="flex w-full flex-col gap-2 rounded-lg bg-gray-100 px-10 py-4"
+            class="flex w-full flex-col gap-1 rounded-r-lg bg-gray-100 px-4 py-2"
         >
             <p class="text-2xl text-gray-500">{{ amount }}</p>
             <p class="text-sm text-gray-600">({{ text }})</p>

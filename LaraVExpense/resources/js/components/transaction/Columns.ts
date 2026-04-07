@@ -16,7 +16,7 @@ function renderExpanded(row: Row<Transaction>) {
         'button',
         {
             onClick: row.getToggleExpandedHandler(),
-            class: 'font-black text-blue-400 cursor-pointer text-xl w-full text-right',
+            class: 'font-black text-blue-400 cursor-pointer text-xl w-full text-right p-0.5 ',
         },
         row.getIsExpanded() ? '-' : '+',
     );
@@ -45,7 +45,7 @@ export const columns: ColumnDef<Transaction>[] = [
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center' },
+                { class: 'text-center text-sm' },
                 `${row.getValue('name')}`,
             );
         },
@@ -71,7 +71,7 @@ export const columns: ColumnDef<Transaction>[] = [
                 currency: 'USD',
             }).format(amount);
 
-            return h('div', { class: 'text-center ' }, formatted);
+            return h('div', { class: 'text-center text-xs' }, formatted);
         },
     },
     {
@@ -89,7 +89,11 @@ export const columns: ColumnDef<Transaction>[] = [
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center ' }, row.getValue('date'));
+            return h(
+                'div',
+                { class: 'text-center text-xs' },
+                row.getValue('date'),
+            );
         },
     },
     {
@@ -107,7 +111,11 @@ export const columns: ColumnDef<Transaction>[] = [
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center' }, row.getValue('category'));
+            return h(
+                'div',
+                { class: 'text-center text-xs' },
+                row.getValue('category'),
+            );
         },
     },
     {
@@ -125,7 +133,11 @@ export const columns: ColumnDef<Transaction>[] = [
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center' }, row.getValue('account'));
+            return h(
+                'div',
+                { class: 'text-center text-xs' },
+                row.getValue('account'),
+            );
         },
     },
     {

@@ -1,10 +1,10 @@
-<script setup>
-import { reactive, ref } from 'vue';
-import FullCalendar from '@fullcalendar/vue3';
+<script setup lang="ts">
 import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { createEventId, INITIAL_EVENTS } from '../../data/CustomData';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import FullCalendar from '@fullcalendar/vue3';
+import { reactive, ref } from 'vue';
+import { INITIAL_EVENTS } from '../../data/CustomData';
 import AddTransDialog from './AddTransDialog.vue';
 
 const calendarOptions = reactive({
@@ -41,10 +41,6 @@ const calendarOptions = reactive({
 const currentEvents = ref([]);
 const isOpen = ref(false);
 
-function handleWeekendsToggle() {
-    this.calendarOptions.weekends = !this.calendarOptions.weekends; // update a property
-}
-
 function handleDateSelect(selectInfo) {
     isOpen.value = true;
     // let title = prompt('Please enter a new title for your event');
@@ -72,7 +68,7 @@ function handleEventClick(clickInfo) {
 }
 
 function handleEvents(events) {
-    this.currentEvents = events;
+    currentEvents.value.push(events);
 }
 </script>
 

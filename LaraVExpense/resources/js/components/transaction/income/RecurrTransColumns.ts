@@ -24,7 +24,7 @@ export const RecurrTransColumns: ColumnDef<RecurringTransaction>[] = [
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center' },
+                { class: 'text-center text-xs' },
                 `${row.getValue('name')}`,
             );
         },
@@ -50,7 +50,7 @@ export const RecurrTransColumns: ColumnDef<RecurringTransaction>[] = [
                 currency: 'USD',
             }).format(amount);
 
-            return h('div', { class: 'text-center ' }, formatted);
+            return h('div', { class: 'text-center text-xs' }, formatted);
         },
     },
     {
@@ -77,7 +77,7 @@ export const RecurrTransColumns: ColumnDef<RecurringTransaction>[] = [
                 currency: 'USD',
             }).format(amount);
 
-            return h('div', { class: 'text-center ' }, formatted);
+            return h('div', { class: 'text-center text-xs' }, formatted);
         },
     },
     {
@@ -95,7 +95,11 @@ export const RecurrTransColumns: ColumnDef<RecurringTransaction>[] = [
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center ' }, row.getValue('date'));
+            return h(
+                'div',
+                { class: 'text-center text-xs' },
+                row.getValue('date'),
+            );
         },
     },
     {
@@ -113,7 +117,11 @@ export const RecurrTransColumns: ColumnDef<RecurringTransaction>[] = [
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center' }, row.getValue('type'));
+            return h(
+                'div',
+                { class: 'text-center text-xs' },
+                row.getValue('type'),
+            );
         },
     },
     {
@@ -131,12 +139,16 @@ export const RecurrTransColumns: ColumnDef<RecurringTransaction>[] = [
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center' }, row.getValue('category'));
+            return h(
+                'div',
+                { class: 'text-center text-xs' },
+                row.getValue('category'),
+            );
         },
     },
     {
         accessorKey: 'action',
-        header: () => h('div', { class: 'text-center' }, 'Actions'),
+        header: () => h('div', { class: 'text-center ' }, 'Actions'),
         cell: ({ row }) => {
             return [
                 h(

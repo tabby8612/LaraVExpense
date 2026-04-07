@@ -45,10 +45,10 @@ function handleTransactionType(type: Transaction) {
                     v-for="transcation of currTransactions"
                     :key="transcation.name"
                 >
-                    <td>{{ transcation.name }}</td>
-                    <td>{{ transcation.date }}</td>
-                    <td>{{ transcation.account }}</td>
-                    <td>{{ transcation.amount }}</td>
+                    <td class="text-xs font-bold">{{ transcation.name }}</td>
+                    <td class="text-xs">{{ transcation.date }}</td>
+                    <td class="text-xs">{{ transcation.account }}</td>
+                    <td class="text-xs font-bold">{{ transcation.amount }}</td>
                 </tr>
             </table>
         </div>

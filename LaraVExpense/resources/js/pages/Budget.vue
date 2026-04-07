@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Head } from '@inertiajs/vue3';
 import { Plus } from 'lucide-vue-next';
 import AddBudgetDialog from '@/components/budget/AddBudgetDialog.vue';
 import { budgetColumns } from '@/components/budget/BudgetColumns';
@@ -9,12 +10,13 @@ import { budgets } from '../../data/CustomData';
 </script>
 
 <template>
+    <Head title="Track Budget" />
     <MainLayout page="trackBudget">
         <section class="p-4">
             <div class="mt-5 rounded-lg border border-gray-100 p-4 shadow">
-                <div class="flex justify-between">
+                <div class="flex items-center justify-between">
                     <h1
-                        class="flex items-center justify-center text-2xl font-bold"
+                        class="flex items-center justify-center text-lg font-bold"
                     >
                         Budget List
                     </h1>

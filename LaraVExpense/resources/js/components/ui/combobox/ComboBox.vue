@@ -31,6 +31,8 @@ const selectedAccount = computed(() => options.filter(option => option.id === se
   <ComboboxRoot
     class="relative w-full "
     required
+    open-on-click
+    
   >
     <ComboboxAnchor class="min-w-[160px] w-full inline-flex items-center justify-between rounded-lg border px-[15px] text-xs leading-none h-[35px] gap-[5px] bg-white text-blue-700 hover:bg-stone-50 shadow-sm focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-blue-700 outline-none">
       <ComboboxInput
@@ -40,7 +42,7 @@ const selectedAccount = computed(() => options.filter(option => option.id === se
         
       />
       <ComboboxTrigger>
-        <ChevronDown />
+        <ChevronDown class="size-3.5 text-black/80" />
       </ComboboxTrigger>
     </ComboboxAnchor>
 

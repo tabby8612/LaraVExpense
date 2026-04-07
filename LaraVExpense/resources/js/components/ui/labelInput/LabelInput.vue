@@ -25,7 +25,7 @@ const modelValue = useVModel(props, "modelValue", emits, {
 
 <template>
     <div class="flex flex-col gap-0 w-full">
-        <Label :for="id" class="my-3 gap-0.5 text-gray-500" :required="required">{{ label }}</Label>
+        <Label :for="id" class="my-1.5 gap-0.5 text-gray-500" :required="required">{{ label }}</Label>
         <Input :id="id" :name="id" :required="required" :type="type" :placeholder="placeholder" v-model="modelValue" class=" selection:bg-blue-400 selection:text-white focus-visible:ring focus-visible:ring-blue-200"/>
     </div>
 </template>

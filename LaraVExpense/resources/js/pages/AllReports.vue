@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
-import MainLayout from '@/layouts/MainLayout.vue';
-import { ArrowRight, ChevronRight } from 'lucide-vue-next';
+import { Head } from '@inertiajs/vue3';
 import ReportLink from '@/components/reports/ReportLink.vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 </script>
 
 <template>
+    <Head title="All Reports" />
     <MainLayout page="reports">
         <section class="p-10">
             <div class="my-5 rounded-lg border border-gray-100 p-4 shadow">

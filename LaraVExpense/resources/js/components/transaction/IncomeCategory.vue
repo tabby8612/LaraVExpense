@@ -41,7 +41,12 @@ const selectedCategory = computed(
 </script>
 
 <template>
-    <ComboboxRoot class="relative w-full" required name="category">
+    <ComboboxRoot
+        class="relative w-full"
+        required
+        name="category"
+        open-on-click
+    >
         <ComboboxAnchor
             class="inline-flex h-[35px] w-full min-w-[160px] items-center justify-between gap-[5px] rounded-lg border bg-white px-[15px] text-xs leading-none text-blue-700 shadow-sm outline-none hover:bg-stone-50 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-blue-700"
         >

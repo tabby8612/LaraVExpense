@@ -75,6 +75,14 @@ function handlePageSizeChange(e: any) {
   table.setPageSize(Number(e.target.value))
 }
 
+function calculatePercentage(spendAmount: number, plannedAmount: number) {
+  const percentage = (spendAmount / plannedAmount) * 100;
+  console.log(spendAmount, plannedAmount, percentage);
+  
+  return percentage;
+
+}
+
 </script>
 
 <template>
@@ -111,7 +119,7 @@ function handlePageSizeChange(e: any) {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="text-center">
+                      <tr class="text-center text-xs">
                         <td>{{ (row.original as Transaction).reference }}</td>
                         <td>{{ (row.original as Transaction).category }}</td>
                         <td>{{ (row.original as Transaction).subCategory }}</td>
@@ -145,7 +153,7 @@ function handlePageSizeChange(e: any) {
                       </div>
                     </div>
                     <div class="h-56">
-                      <CircularProgress label="Spend Percentage" :percent="((row.original as Budget).spendAmount / (row.original as Budget).plannedAmount) * 100" />
+                      <CircularProgress  label="Spend Percentage" :percent="calculatePercentage((row.original as Budget).spendAmount, (row.original as Budget).plannedAmount)" />
                       
                     </div>
                   </section>

@@ -19,6 +19,7 @@ import {
     tags,
     transactionTypes,
 } from '../../../data/CustomData';
+import Button from '../ui/button/Button.vue';
 import CustomSelect from '../ui/select/CustomSelect.vue';
 import IncomeCategory from './IncomeCategory.vue';
 import IncomeSubCategory from './IncomeSubCategory.vue';
@@ -38,7 +39,11 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                     Add Recurring Transaction
                 </DialogTitle>
                 <DialogDescription />
-                <Form action="/recurring-transactions" method="post">
+                <Form
+                    action="/recurring-transactions"
+                    method="post"
+                    class="mt-3"
+                >
                     <LabelInput
                         id="name"
                         label="Name"
@@ -47,7 +52,7 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                         required
                     />
 
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <LabelInput
                             id="amount"
                             label="Amount"
@@ -56,7 +61,7 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                             required
                         />
                         <div class="w-full">
-                            <Label class="my-3 gap-0.5 text-gray-500"
+                            <Label class="my-1.5 gap-0.5 text-gray-500"
                                 ><span class="text-red-500">*</span> Transaction
                                 Type</Label
                             >
@@ -67,25 +72,25 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                             />
                         </div>
                     </div>
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <div class="w-full">
-                            <Label class="my-3 gap-0.5 text-gray-500"
+                            <Label class="my-1.5 gap-0.5 text-gray-500"
                                 ><span class="text-red-500">*</span>
                                 Category</Label
                             >
                             <IncomeCategory />
                         </div>
                         <div class="w-full">
-                            <Label class="my-3 gap-0.5 text-gray-500"
+                            <Label class="my-1.5 gap-0.5 text-gray-500"
                                 ><span class="text-red-500">*</span> Sub
                                 Category</Label
                             >
                             <IncomeSubCategory />
                         </div>
                     </div>
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <div class="w-full">
-                            <Label class="my-3 gap-0.5 text-gray-500"
+                            <Label class="my-1.5 gap-0.5 text-gray-500"
                                 ><span class="text-red-500">*</span>
                                 Account</Label
                             >
@@ -96,7 +101,7 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                             />
                         </div>
                         <div class="w-full">
-                            <Label class="my-3 gap-0.5 text-gray-500"
+                            <Label class="my-1.5 gap-0.5 text-gray-500"
                                 ><span class="text-red-500">*</span> Recurring
                                 Type</Label
                             >
@@ -107,7 +112,7 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                             />
                         </div>
                     </div>
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <LabelInput
                             id="start_date"
                             label="Start Date"
@@ -120,7 +125,7 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                             type="date"
                         />
                     </div>
-                    <div class="mt-1 flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <div class="w-1/2">
                             <LabelInput
                                 id="reference"
@@ -129,7 +134,7 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                             />
                         </div>
                         <div class="w-1/2">
-                            <Label class="my-3 gap-0.5 text-gray-500"
+                            <Label class="my-1.5 gap-0.5 text-gray-500"
                                 >Tags</Label
                             >
 
@@ -141,25 +146,24 @@ import IncomeSubCategory from './IncomeSubCategory.vue';
                             />
                         </div>
                     </div>
-                    <div class="mt-2 flex flex-col justify-between gap-1">
-                        <Label for="note" class="my-3 text-gray-500">
+                    <div class="mt-3 flex flex-col justify-between gap-1">
+                        <Label for="note" class="my-1.5 text-gray-500">
                             Description
                         </Label>
                         <textarea
                             id="description"
                             name="description"
                             class="rounded-lg border border-gray-300 px-2 py-3 text-sm shadow"
-                            rows="1"
+                            rows="2"
                         />
                     </div>
 
                     <div class="mt-[25px] flex justify-end">
-                        <button
+                        <Button
                             type="submit"
-                            class="bg-green4 text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-lg px-[15px] text-sm leading-none font-semibold focus:shadow-[0_0_0_2px] focus:outline-none"
+                            class="cursor-pointer bg-blue-700 hover:bg-blue-800"
+                            >Save Changes</Button
                         >
-                            Save changes
-                        </button>
                     </div>
                 </Form>
 

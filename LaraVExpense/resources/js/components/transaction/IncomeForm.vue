@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { Form } from '@inertiajs/vue3';
+import { Form, Head } from '@inertiajs/vue3';
 import IncomeCategory from '@/components/transaction/IncomeCategory.vue';
 import Button from '@/components/ui/button/Button.vue';
 import ComboBox from '@/components/ui/combobox/ComboBox.vue';
 import { Input } from '@/components/ui/input';
 import Label from '@/components/ui/label/Label.vue';
 import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
+import { tags } from '../../../data/CustomData';
+import CustomSelect from '../ui/select/CustomSelect.vue';
 </script>
 
 <template>
+    <Head title="Add Transaction" />
     <section class="w-full rounded border p-4 shadow-xs">
-        <h1 class="text-2xl font-extrabold">Income Transaction</h1>
+        <h1 class="text-lg font-extrabold">Income Transaction</h1>
         <Form
             action="/transactions"
             method="post"
             :transform="(data) => ({ ...data, transType: 'income' })"
+            class="mt-3"
         >
             <LabelInput
                 id="name"
@@ -41,7 +45,7 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
             <div class="mt-3 flex justify-between gap-4">
                 <LabelInput id="date" label="Date" type="date" required />
                 <div class="flex w-full flex-col gap-0">
-                    <Label for="account" class="my-3 gap-0.5 text-gray-500">
+                    <Label for="account" class="my-1.5 gap-0.5 text-gray-500">
                         <span class="text-red-400">*</span>
                         Account
                     </Label>
@@ -50,14 +54,14 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
             </div>
             <div class="mt-3 flex justify-between gap-4">
                 <div class="w-full">
-                    <Label for="account" class="my-3 gap-0.5 text-gray-500">
+                    <Label for="account" class="my-1.5 gap-0.5 text-gray-500">
                         <span class="text-red-400">*</span>
                         Income Category
                     </Label>
                     <IncomeCategory />
                 </div>
                 <div class="w-full">
-                    <Label for="account" class="my-3 gap-0.5 text-gray-500">
+                    <Label for="account" class="my-1.5 gap-0.5 text-gray-500">
                         <span class="text-red-400">*</span>
                         Income Sub Category
                     </Label>
@@ -65,20 +69,26 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
                 </div>
             </div>
             <div class="mt-3 flex flex-col justify-between gap-0">
-                <Label for="note" class="my-3 text-gray-500"> Note </Label>
+                <Label for="note" class="my-1.5 text-gray-500"> Note </Label>
                 <textarea
                     id="note"
                     name="note"
-                    class="rounded-lg border border-gray-300 px-2 py-3 text-sm shadow"
+                    class="rounded-lg border border-gray-300 px-2 py-3 text-sm shadow focus-visible:outline-1 focus-visible:outline-blue-800"
                     rows="3"
                 />
             </div>
-            <div class="flex w-full flex-col gap-0">
-                <Label for="tag" class="my-3 gap-0.5 text-gray-500">
+            <div class="mt-3 flex w-full flex-col gap-0">
+                <Label for="tag" class="my-1.5 gap-0.5 text-gray-500">
                     <span class="text-red-400">*</span>
                     Tags
                 </Label>
-                <ComboBox name="tag" />
+                <!-- <ComboBox name="tag" /> -->
+                <CustomSelect
+                    label="Tags"
+                    name="tags"
+                    is-multiple
+                    :options="tags"
+                />
             </div>
             <div class="mt-5 flex w-full flex-col gap-0">
                 <Input
@@ -86,7 +96,8 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
                     class="h-24 file:h-24 file:text-sm file:font-bold file:text-blue-500"
                 />
             </div>
-            <Button class="mt-9 cursor-pointer bg-blue-700 hover:bg-blue-800"
+            <Button
+                class="z-10 mt-9 cursor-pointer bg-blue-700 hover:bg-blue-800"
                 >Submit</Button
             >
         </Form>

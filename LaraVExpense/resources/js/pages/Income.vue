@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Head } from '@inertiajs/vue3';
 import { Plus, Upload } from 'lucide-vue-next';
 import Summary from '@/components/dashboard/Summary.vue';
 import { columns } from '@/components/transaction/Columns';
@@ -11,6 +12,7 @@ import { payments } from '../../data/CustomData';
 
 <template>
     <MainLayout page="income">
+        <Head title="Income List" />
         <section class="p-4">
             <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
                 <Summary variant="income" amount="190000" text="Overall" />
@@ -21,7 +23,7 @@ import { payments } from '../../data/CustomData';
             <div class="mt-5 rounded-lg border border-gray-100 p-4 shadow">
                 <div class="flex justify-between">
                     <h1
-                        class="flex items-center justify-center text-2xl font-bold"
+                        class="flex items-center justify-center text-lg font-bold"
                     >
                         Income List
                     </h1>

@@ -45,9 +45,9 @@ const isOpen = defineModel<boolean>('isOpen', {
                         required
                     />
 
-                    <div class="mt-1 flex justify-between gap-5">
-                        <div class="my-3 flex w-full flex-col gap-1.5">
-                            <Label for="type" class="text-sm"
+                    <div class="mt-3 flex justify-between gap-5">
+                        <div class="flex w-full flex-col gap-1.5">
+                            <Label for="type" class="my-0 text-sm"
                                 ><span class="text-red-500">*</span> Transaction
                                 Type</Label
                             >
@@ -66,14 +66,14 @@ const isOpen = defineModel<boolean>('isOpen', {
                             required
                         />
                     </div>
-                    <div class="flex justify-between gap-5">
+                    <div class="mt-3 flex justify-between gap-5">
                         <LabelInput
                             id="date"
                             label="Date"
                             type="date"
                             required
                         />
-                        <div class="my-3 flex w-full flex-col gap-1.5">
+                        <div class="flex w-full flex-col gap-1.5">
                             <Label class="text-sm"
                                 ><span class="text-red-500">*</span>
                                 Account</Label

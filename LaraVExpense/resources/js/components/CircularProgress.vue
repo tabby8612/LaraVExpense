@@ -7,8 +7,8 @@
             :is-gradient="true"
             :gradient="{
                 angle: 90,
-                startColor: '#bbf7d0',
-                stopColor: '#86efac',
+                startColor: 'oklch(62.7% 0.194 149.214)',
+                stopColor: 'oklch(52.7% 0.154 150.069)',
             }"
             :show-percent="true"
             :percent="percent"

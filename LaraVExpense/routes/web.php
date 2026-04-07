@@ -29,7 +29,7 @@ Route::inertia('/tags', 'Tags')->name('tags');
 
 
 Route::prefix('reports')->group(function () {
-    Route::inertia('/allreports', 'AllReports')->name('allReports');
+    Route::inertia('allreports', 'AllReports')->name('allReports');
     Route::inertia('income', 'reports/IncomeReport')->name('incomeReport');
     Route::inertia('expense', 'reports/ExpenseReport')->name('expenseReport');
     Route::inertia('incomevsexpense', 'reports/IncomeExpenseReport')->name('incomeExpenseReport');

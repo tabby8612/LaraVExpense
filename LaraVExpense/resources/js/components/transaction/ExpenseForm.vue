@@ -10,11 +10,12 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
 
 <template>
     <section class="w-full rounded border p-4 shadow-xs">
-        <h1 class="text-2xl font-extrabold">Expense Transaction</h1>
+        <h1 class="text-lg font-extrabold">Expense Transaction</h1>
         <Form
             action="/transactions"
             method="post"
             :transform="(data) => ({ ...data, transType: 'expense' })"
+            class="mt-3"
         >
             <LabelInput
                 id="name"
@@ -41,7 +42,7 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
             <div class="mt-3 flex justify-between gap-4">
                 <LabelInput id="date" label="Date" type="date" required />
                 <div class="flex w-full flex-col gap-0">
-                    <Label for="account" class="my-3 gap-0.5 text-gray-500">
+                    <Label for="account" class="my-1.5 gap-0.5 text-gray-500">
                         <span class="text-red-400">*</span>
                         Account
                     </Label>
@@ -50,14 +51,14 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
             </div>
             <div class="mt-3 flex justify-between gap-4">
                 <div class="w-full">
-                    <Label for="account" class="my-3 gap-0.5 text-gray-500">
+                    <Label for="account" class="my-1.5 gap-0.5 text-gray-500">
                         <span class="text-red-400">*</span>
                         Expense Category
                     </Label>
                     <IncomeCategory />
                 </div>
                 <div class="w-full">
-                    <Label for="account" class="my-3 gap-0.5 text-gray-500">
+                    <Label for="account" class="my-1.5 gap-0.5 text-gray-500">
                         <span class="text-red-400">*</span>
                         Expense Sub Category
                     </Label>
@@ -65,14 +66,14 @@ import LabelInput from '@/components/ui/labelInput/LabelInput.vue';
                 </div>
             </div>
             <div class="mt-3 flex flex-col justify-between gap-0">
-                <Label for="account" class="my-3 text-gray-500"> Note </Label>
+                <Label for="account" class="my-1.5 text-gray-500"> Note </Label>
                 <textarea
                     class="rounded-lg border border-gray-300 px-2 py-3 text-sm shadow"
                     rows="3"
                 />
             </div>
-            <div class="flex w-full flex-col gap-0">
-                <Label for="tag" class="my-3 gap-0.5 text-gray-500">
+            <div class="mt-3 flex w-full flex-col gap-0">
+                <Label for="tag" class="my-1.5 gap-0.5 text-gray-500">
                     <span class="text-red-400">*</span>
                     Tags
                 </Label>

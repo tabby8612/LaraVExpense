@@ -45,7 +45,7 @@ export const budgetColumns: ColumnDef<Budget>[] = [
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center' },
+                { class: 'text-center text-xs' },
                 `${row.getValue('category')}`,
             );
         },
@@ -70,7 +70,7 @@ export const budgetColumns: ColumnDef<Budget>[] = [
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center ' },
+                { class: 'text-center text-xs' },
                 row.getValue('subCategory'),
             );
         },
@@ -95,7 +95,7 @@ export const budgetColumns: ColumnDef<Budget>[] = [
         cell: ({ row }) => {
             return h(
                 'div',
-                { class: 'text-center ' },
+                { class: 'text-center text-xs' },
                 row.getValue('plannedAmount'),
             );
         },
@@ -115,7 +115,11 @@ export const budgetColumns: ColumnDef<Budget>[] = [
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center' }, `${row.original.month}`);
+            return h(
+                'div',
+                { class: 'text-center text-xs' },
+                `${row.original.month}`,
+            );
         },
     },
     {
@@ -133,7 +137,11 @@ export const budgetColumns: ColumnDef<Budget>[] = [
             );
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-center' }, `${row.original.year}`);
+            return h(
+                'div',
+                { class: 'text-center text-xs' },
+                `${row.original.year}`,
+            );
         },
     },
     {
