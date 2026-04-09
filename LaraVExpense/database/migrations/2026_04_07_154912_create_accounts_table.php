@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('accountNo');
             $table->integer('openingBalance');
             $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
