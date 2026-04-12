@@ -16,8 +16,8 @@ class TransactionSeeder extends Seeder {
      */
     public function run(): void {
         //
-        $usersIDs = User::all('id')->toArray();
-        $accountIDs = Account::all('id')->toArray();
+        $usersIDs = User::all('id')->pluck('id');
+        $accountIDs = Account::all('id')->pluck('id');
         $incomeCategories = Category::query()->where('transactionType', TransactionTypeEnum::INCOME->value)->with('subCategories')->get()->toArray();
         $expenseCategories = Category::query()->where('transactionType', TransactionTypeEnum::EXPENSE->value)->with('subCategories')->get()->toArray();
 
@@ -26,17 +26,19 @@ class TransactionSeeder extends Seeder {
         for ($i = 0; $i < 25; $i++) {
             $randomIncomeCategory = fake()->randomElement($incomeCategories);
             $randomExpenseCategory = fake()->randomElement($expenseCategories);
+            $randomIncomeSubCategory = fake()->randomElement($randomIncomeCategory['sub_categories']);
+            $randomExpenseSubCategory = fake()->randomElement($randomExpenseCategory['sub_categories']);
 
             $incomes[] = [
                 'type' => TransactionTypeEnum::INCOME->value,
                 'userID' => fake()->randomElement($usersIDs),
-                'name' => fake()->words(6),
+                'name' => fake()->word(),
                 'slug' => fake()->unique()->slug(),
-                'reference' => fake()->regexify('[A-Z]{5}[0-4]{3}'),
+                'referenceNo' => fake()->regexify('[A-Z]{5}[0-4]{3}'),
                 'amount' => fake()->numberBetween(2000, 4000),
                 'accountID' => fake()->randomElement($accountIDs),
-                'categoryID' => $randomIncomeCategory->id,
-                'subCategoryID' => $randomIncomeCategory->subCategories->id,
+                'categoryID' => $randomIncomeCategory['id'],
+                'subCategoryID' => isset($randomIncomeSubCategory) ? $randomIncomeSubCategory['id'] : null,
                 'note' => fake()->sentence(),
                 'date' => now()->addDays(($i * 2) + 1),
             ];
@@ -44,13 +46,13 @@ class TransactionSeeder extends Seeder {
             $expenses[] = [
                 'type' => TransactionTypeEnum::EXPENSE->value,
                 'userID' => fake()->randomElement($usersIDs),
-                'name' => fake()->words(6),
+                'name' => fake()->word(6),
                 'slug' => fake()->unique()->slug(),
-                'reference' => fake()->regexify('[A-Z]{5}[0-4]{3}'),
+                'referenceNo' => fake()->regexify('[A-Z]{5}[0-4]{3}'),
                 'amount' => fake()->numberBetween(2000, 4000),
                 'accountID' => fake()->randomElement($accountIDs),
-                'categoryID' => $randomExpenseCategory->id,
-                'subCategoryID' => $randomExpenseCategory->subCategories->id,
+                'categoryID' => $randomExpenseCategory['id'],
+                'subCategoryID' => isset($randomExpenseSubCategory) ? $randomExpenseSubCategory['id'] : null,
                 'note' => fake()->sentence(),
                 'date' => now()->addDays(($i * 2) + 1),
             ];

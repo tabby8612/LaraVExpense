@@ -1,12 +1,17 @@
 <?php
 
+use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
 Route::inertia('/', 'Welcome')->name('home');
 
-Route::inertia('/transactions', 'Transaction')->name('transactions');
+Route::controller(TransactionController::class)->group(function () {
+    Route::get('transactions', 'create')->name('transactions.create');
+});
+
+// Route::inertia('/transactions', 'Transaction')->name('transactions');
 
 Route::post('/transactions', function (Request $request) {
     dd($request->all());

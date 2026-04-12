@@ -14,16 +14,14 @@ class AccountSeeder extends Seeder {
      */
     public function run(): void {
         //
-        $users = User::all('id')->toArray();
+        $users = User::all('id')->pluck('id');
 
         for ($i = 0; $i < 20; $i++) {
-            $randomUser = fake()->randomElement($users);
-
             Account::create([
-                'userID' => $randomUser->id,
+                'userID' => fake()->randomElement($users),
                 'slug' => fake()->slug(),
-                'name' => fake()->words(5),
-                'accountNo' => fake()->regexify('A-Z{5}0-9{16}'),
+                'name' => fake()->word(),
+                'accountNo' => fake()->regexify('[A-Z]{5}[0-9]{16}'),
                 'openingBalance' => fake()->numberBetween(100, 200),
                 'description' => fake()->paragraph()
             ]);

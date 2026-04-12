@@ -18,18 +18,12 @@ class CategorySeeder extends Seeder {
         for ($i = 0; $i < 20; $i++) {
             $category = Category::create([
                 'transactionType' => fake()->randomElement([TransactionTypeEnum::INCOME->value, TransactionTypeEnum::EXPENSE->value]),
-                'name' => fake()->words(),
+                'name' => fake()->word(),
                 'description' => fake()->sentence(),
                 'color' => fake()->safeHexColor()
             ]);
 
-            for ($i = 0; $i < 5; $i++) {
-                SubCategory::create([
-                    'categoryID' => $category->id,
-                    'name' => fake()->words(5),
-                    'description' => fake()->sentence()
-                ]);
-            }
+
         }
     }
 }
