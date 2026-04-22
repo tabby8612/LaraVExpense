@@ -18,19 +18,7 @@ class UserService
     public function create(array $data)
     {
 
-        $user = User::query()->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'role' => $data['role'],
-        ]);
-
-        if (! $user) {
-            return response()->json([
-                'message' => 'Unsuccessful',
-                'success' => false,
-            ], 402);
-        }
+        
 
         $credentials = [
             'email' => $data['email'],

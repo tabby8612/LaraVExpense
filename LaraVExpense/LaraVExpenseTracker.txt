@@ -1,0 +1,151 @@
+Laravel Sanctum and apis
+[Done]https://www.youtube.com/watch?v=LmMJB3STuU4
+[Done]https://www.youtube.com/watch?v=7pCDK321ckE
+[Done]https://www.youtube.com/watch?v=G-bz_FIcczg
+
+Travel API MENTORShip
+[Done]https://www.youtube.com/playlist?list=PLdXLsjL7A9k2utMAieXUnUP8zyxaDA3mP
+[Done]https://www.youtube.com/watch?v=NfgWgoo4tj8&list=PL1JpS8jP1wgA9EpT9UO0UuPrFcJxGUcxH
+
+Make New Portfolio with Vue
+https://dev-master-mind.vercel.app/
+https://prova-portfolio-template.vercel.app/
+
+
+learn about useTransition and use() in React
+
+Complete 
+[Done] https://www.youtube.com/watch?v=VeNfHj6MhgA
+https://www.youtube.com/watch?v=Kt2E8nblvXU
+https://www.youtube.com/watch?v=5oKpoqmUj64
+
+Create/Update CV
+https://chatgpt.com/share/696645c3-7680-8001-94f8-df7c293a8224
+
+fix lararental, laranaukri
+
+update linkedin / github
+
+make profolio website using
+https://dev-master-mind.vercel.app/
+https://prova-portfolio-template.vercel.app/ (project display)
+
+post to linkedin
+
+Learn Multi-tenant from
+https://www.youtube.com/playlist?list=PLT51dtioU1pPA3c0bDfAAP7bQ8g8ebc4-
+
+
+Make full expense tracker (multi-tenant)
+https://codecanyon.net/item/money-pro-cashflow-and-budgeting-manager/20657801
+
+https://moneyprodemo.captivlab.com/
+
+Feature to Add
+1. Docker File
+2. Use PostgresSQL or Mongodb (Do https://www.youtube.com/watch?v=VK-2j5CNsvM) to understand Laravel + Mongodb)
+	- I prefer Mongodb as it will help in MERN and MEAN
+3. Write Test Code Using Pest
+4. Caching with Redis
+4. Repository pattern using DTO (DTO works like struct in C++ they help with type safety. Instead of passing array in create/insert Eloquent method, you pass object of DTO class that gives type safety). https://www.youtube.com/watch?v=HpItY4pu610
+4. Add Notification, whenever user clicks to generate PDF, its goes into queue and show notification upon completion.
+4. Use s3 storage to store pdf
+5. PHPSTAN 5/6/7
+6. Use animate library to animate sections/div on scroll
+7. Laravel Sanctum
+8. Custom Hooks in Vue and use Service Containers and Actions in Laravel (https://chatgpt.com/share/696b8ab8-53d8-8001-b7bf-271d70758722)
+9. Register by emailing code, enable 2fa as well like https://www.youtube.com/watch?v=WTqUXtEpDH0
+10. Learn React Native to convert it into mobile app.
+11. Learn Flutter to convert it into mobile app.
+12. Use Reverb to update income or expense live without refreshing.
+13. Use localization with currency conversion.
+14. Rate Limiting, Throttling, Sanctum, CORS, and other API Protection practices.
+15. Socialite to login with google
+16. Push Notification
+17. Vue Motion, spatie/laravel-permission, spatie/laravel-medialibrary, spatie/laravel-activitylog, spatie/laravel-query-builder, spatie/laravel-sluggable, 
+	spatie/laravel-data, spatie/laravel-responsecache, 
+18. budget vs actuals budget
+19. SAAS version
+20. Feature Request: This app should have an independent page labeled “Savings/Piggy Bank”. This feature will work like a simple Piggy Bank. It would show the amount we deposited in a bank every month or every day from a date to today. If we withdraw any money from it it will not affect other things like expenses or income or balance. This will have only two formulas(Addition & Subtraction).
+21. Make it responsive for mobile, ipad, and large screen
+22. Transfer between own account.
+23. Fixed monthly payments.
+24. Budget dedication from the account directly.
+25. Loan payments. so, I can understand how much left for me to finish my loans.
+
+
+
+
+https://drawdb.vercel.app/editor?shareId=6978e2ce5bbadf375e67f2802523a101
+https://drawdb.vercel.app/editor?shareId=6978e2ce5bbadf375e67f2802523a101
+https://drawdb.vercel.app/editor?shareId=6978e2ce5bbadf375e67f2802523a101
+https://drawdb.vercel.app/editor?shareId=6978e2ce5bbadf375e67f2802523a101
+
+
+https://i.vgy.me/bKRYnY.png
+
+
+Advanced features
+recurring expenses
+monthly budgets
+expense analytics
+receipt scanning
+family shared expenses
+category wise reports
+
+Wordpress eCommerce Store
+https://www.youtube.com/watch?v=vU7oTmD81ZA&list=PLjR7HjmPoicGIuTge6eiEZgS8Q8GbetVc
+
+
+Zandgi Trust
+Hbox
+Verior.co
+Contour Software
+NatureTech Private
+AFG Tech
+Karvel Cobsulting
+Nisum Technologies
+Pi Pvt
+Rozee.pk
+Omfort Pvt. ltd
+Code Informatics
+NinetySevenTechSolution
+Creatiks
+MSBIT SOLUTON
+Tech Wise
+
+
+
+
+https://codecanyon.net/item/mentor-lms-learning-management-system/59092700
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
