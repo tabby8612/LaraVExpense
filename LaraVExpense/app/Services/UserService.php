@@ -16,9 +16,7 @@ class UserService
     }
 
     public function create(array $data)
-    {
-
-        
+    {  
 
         $credentials = [
             'email' => $data['email'],

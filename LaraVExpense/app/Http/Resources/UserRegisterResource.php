@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserRegisterResource extends JsonResource
 {
+    
     /**
      * Transform the resource into an array.
      *
@@ -14,11 +15,11 @@ class UserRegisterResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
         return [
-            'id'=> $this->id,
-            'name'=> $this->name,
-            'email' => $this->email,
+            'user' => $this->user,
+            'token'=> $this->token,
+            'message' => 'User Successfully Logged In',
+            'success'=> true,
         ];
     }
 }

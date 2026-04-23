@@ -15,11 +15,11 @@ class AuthController extends Controller
     
     public function register(UserRegisterRequest $request)
     {
-        $validated = $request->validated();
+        $userData = $request->toDTO();
 
-        $user = $this->authService->register($validated);
-        
-        return new UserRegisterResource($user);
+        $registeredUser = $this->authService->register($userData);
+
+        return $registeredUser;
         
     }
 
