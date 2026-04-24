@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User;
 
+use App\Dtos\User\UserLoginDTO;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,5 +27,11 @@ class UserLoginRequest extends FormRequest
             'email'=> ['required','email'],
             'password'=> ['required','string','min:5'],
         ];
+    }
+
+    public function toDTO() {
+        $data = $this->validated();
+
+        return UserLoginDTO::from($data);
     }
 }

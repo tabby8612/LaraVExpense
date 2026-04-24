@@ -8,6 +8,7 @@ use App\Http\Resources\UserRegisterResource;
 use App\Services\AuthService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -19,11 +20,18 @@ class AuthController extends Controller
 
         $registeredUser = $this->authService->register($userData);
 
-        return $registeredUser;
-        
+        return $registeredUser;        
     }
 
     public function login(UserLoginRequest $request) {
 
+        $userLoginData = $request->toDTO();
+
+        return $this->authService->login($userLoginData);
+    }
+
+    public function logout(Request $request) {
+
+        return $this->authService->logout($request);
     }
 }

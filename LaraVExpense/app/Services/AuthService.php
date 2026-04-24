@@ -2,9 +2,12 @@
 
 namespace App\Services;
 
+use App\Dtos\User\UserLoginDTO;
 use App\Dtos\User\UserRegisterDTO;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,20 +44,17 @@ class AuthService
             'message' => 'User Created Successfully',
             'success'=> true,
         ]);
-
-
-
-        return $user;
+        
     }
 
-    public function login(int $userID) {
+    public function login(UserLoginDTO $userDTO) {
        
         try {
-            $user = User::query()->findOrFail($userID);
+            $user = User::query()->where('email', $userDTO->email)->select(['email', 'name', 'role', 'id'])->firstOrFail();
 
             $credentials = [
-                'email' => $user->email,
-                'password' => $user->password
+                'email' => $userDTO->email,
+                'password' => $userDTO->password,
             ];
 
             if (!Auth::attempt($credentials)) {
@@ -75,9 +75,22 @@ class AuthService
 
         } catch (ModelNotFoundException $th) {
             return response()->json([
-                'message' => 'User Not Found',
+                'message' => 'Invalid Credentials',
                 'success'=> false,
             ], 404);
         }
+    }
+
+    public function logout(Request $request) {
+        $user = $request->user();
+
+        if ($user) {
+            $user->tokens()->delete();
+        }
+
+        return response()->json([
+            'message'=> 'Successfully Loggout',
+            'success'=> true,
+        ], 200);
     }
 }
