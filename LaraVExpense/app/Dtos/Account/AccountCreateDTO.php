@@ -5,7 +5,7 @@ namespace App\Dtos\Account;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
 
-class AccountCreateDTO extends Data
+class AccountDTO extends Data
 {
     public function __construct(
         public ?string $name,

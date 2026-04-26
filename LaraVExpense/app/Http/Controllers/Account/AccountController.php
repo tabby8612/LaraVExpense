@@ -10,6 +10,7 @@ use App\Http\Resources\Account\AccountDetailResource;
 use App\Models\Account;
 use App\Services\AccountService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AccountController extends Controller
 {
@@ -54,16 +55,11 @@ class AccountController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id) {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(AccountUpdateRequest $request, Account $account) {
+
+        Gate::authorize("update", $account);
 
         $requestDto = $request->toDTO();
 
@@ -71,14 +67,25 @@ class AccountController extends Controller
 
         $newAccountDetails = $this->accountService->update($accountDetail, $requestDto);
 
-        return new AccountCreateResource($newAccountDetails);
-        
+        return response()->json([
+            'message' => 'Accoun Updated Successfully',
+            'data' => new AccountDetailResource($newAccountDetails),
+            'success' => true,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Account $account) {
-        //
+        
+        Gate::authorize('delete', $account);
+
+        $isDeleted = $this->accountService->delete($account);
+
+        return response()->json([
+            'message' => 'Deleted Successfully',
+            'success' => true,
+        ]);
     }
 }

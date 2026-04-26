@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Account;
+namespace App\Http\Requests\Category;
 
-use App\Dtos\Account\AccountCreateDTO;
-use App\Dtos\Account\AccountDTO;
+use App\Dtos\Category\CategoryCreateDTO;
+use App\Dtos\Category\CategoryDTO;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class AccountCreateRequest extends FormRequest
+class CategoryCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,21 +26,22 @@ class AccountCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','string','max:100'],
-            'accountNo' => ['required','string','max:20'],
-            'openingBalance' => ['required','numeric'],
-            'description'=> ['nullable','string','max:200'],
+            'transactionType' => ['required', 'numeric', 'in:1,2'],
+            'name' => ['required', 'string', 'max:200'],
+            'description' => ['nullable', 'string', 'max:200'],
+            'color' => ['nullable', 'hex_color'],
         ];
     }
 
     public function toDTO() {
         $data = $this->validated();
 
-        return AccountDTO::from([
+        return CategoryDTO::from([
+            'createdBy'=> Auth::id(),
+            'transactionType'=> $data['transactionType'],
             'name'=> $data['name'],
-            'accountNo'=> $data['accountNo'],
-            'openingBalance'=> (int) $data['openingBalance'],
             'description'=> $data['description'] ?? '',
+            'color'=> $data['color'] ?? '',
         ]);
     }
 }

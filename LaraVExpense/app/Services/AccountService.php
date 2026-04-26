@@ -56,6 +56,11 @@ class AccountService
         $account->update($data);
 
         return $account;
+    }
 
+    public function delete(Account $account) {
+        $account = $this->getById($account->id);
+
+        return $account->delete();
     }
 }
