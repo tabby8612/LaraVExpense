@@ -23,5 +23,13 @@ class UserSeeder extends Seeder {
             ]);
         }
 
+        User::create([
+                'name' => 'Tabish Sajwani',
+                'email' => 'tabishsajwani@hotmail.com',
+                'phone' => fake()->phoneNumber(),
+                'password' => bcrypt('karachi74800'),
+                'role' => UserTypeEnum::ADMINISTRATOR->value,
+            ]);
+
     }
 }

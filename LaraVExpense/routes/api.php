@@ -3,6 +3,7 @@
 use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\SubCategory\SubCategoryController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,5 +32,11 @@ Route::prefix('categories')->controller(CategoryController::class)->middleware([
     Route::post('/','store');
     Route::put('/{category}','update');
     Route::delete('/{category}','destroy');
-
+});
+Route::prefix('subCategories')->controller(SubCategoryController::class)->middleware(['auth:sanctum'])->group(function () {
+    Route::get('/','index');
+    // Route::get('/{category}','show');
+    Route::post('/','store');
+    // Route::put('/{category}','update');
+    // Route::delete('/{category}','destroy');
 });

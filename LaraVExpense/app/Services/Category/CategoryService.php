@@ -2,7 +2,7 @@
 
 namespace App\Services\Category;
 
-use App\Dtos\Category\CategoryCreateDTO;
+use App\Dtos\Category\CategoryDTO;
 use App\Models\Category;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -18,7 +18,7 @@ class CategoryService
         //
     }
 
-    public function create(CategoryCreateDTO $categoryDTO) {
+    public function create(CategoryDTO $categoryDTO) {
         $category = Category::query()->create($categoryDTO->toArray());
 
         return $category;
@@ -27,13 +27,13 @@ class CategoryService
     public function getAll() {
         $categories = Category::query()
                       ->with(['user'])
-                      ->where("createdBy", Auth::id())
+                      ->where('createdBy', Auth::id())
                       ->get();
 
         return $categories;
     }
 
-    public function getById(string $id) {
+    public function getById(string $id): Category {
         try {
             $category = Category::query()
                         ->with(['user'])
@@ -48,7 +48,7 @@ class CategoryService
         }
     }
 
-    public function update(Category $category, CategoryCreateDTO $categoryDTO) {
+    public function update(Category $category, CategoryDTO $categoryDTO) {
         $data = array_filter($categoryDTO->toArray(), fn ($value) => $value !== null);
 
         $category->update($data);
