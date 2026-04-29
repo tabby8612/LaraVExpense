@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CategoryCreateRequest;
 use App\Http\Requests\Category\CategoryUpdateRequest;
 use App\Http\Requests\SubCategory\SubCategoryCreateRequest;
+use App\Http\Requests\SubCategory\SubCategoryUpdateRequest;
 use App\Http\Resources\Category\CategoryResource;
 use App\Http\Resources\SubCategory\SubCategoryResource;
 use App\Models\Category;
+use App\Models\SubCategory;
 use App\Services\Category\CategoryService;
 use App\Services\SubCategory\SubCategoryService;
 use Illuminate\Http\Request;
@@ -44,37 +46,37 @@ class SubCategoryController extends Controller
         ], 201);
     }
 
-    // public function show(Category $category) {
-    //     $categoryDetail = $this->categoryService->getById($category->id);
+    public function show(SubCategory $subCategory) {
+        $categoryDetail = $this->subCategoryService->getById($subCategory->id);
 
-    //     return new CategoryResource($categoryDetail);
-    // }
+        return new SubCategoryResource($categoryDetail);
+    }
 
-    // public function update(CategoryUpdateRequest $request, Category $category) {
+    public function update(SubCategoryUpdateRequest $request, SubCategory $subCategory) {
         
-    //     Gate::authorize('update', $category);
+        Gate::authorize('update', $subCategory);
     
-    //     $categoryDTO = $request->toDTO();
+        $subCategoryDTO = $request->toDTO();
 
-    //     $category = $this->categoryService->getById($category->id);
+        $subCategory = $this->subCategoryService->getById($subCategory->id);
 
-    //     $updatedCategory = $this->categoryService->update($category, $categoryDTO);
+        $updatedCategory = $this->subCategoryService->update($subCategory, $subCategoryDTO);
 
-    //     return response()->json([
-    //         'message'=> 'Category Updated Successfully',
-    //         'data'=> new CategoryResource($updatedCategory),
-    //         'success'=> true,
-    //     ]);
-    // }
+        return response()->json([
+            'message'=> 'Category Updated Successfully',
+            'data'=> new SubCategoryResource($updatedCategory),
+            'success'=> true,
+        ]);
+    }
 
-    // public function destroy(Category $category) {
-    //     Gate::authorize('delete', $category);
+    public function destroy(SubCategory $subCategory) {
+        Gate::authorize('delete', $subCategory);
 
-    //     $isDeleted = $this->categoryService->delete($category);
+        $isDeleted = $this->subCategoryService->delete($subCategory);
 
-    //     return response()->json([
-    //         'message'=> 'Deleted Successfully',
-    //         'success' => true
-    //     ]);
-    // }
+        return response()->json([
+            'message'=> 'Deleted Successfully',
+            'success' => true
+        ]);
+    }
 }

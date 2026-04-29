@@ -33,10 +33,10 @@ Route::prefix('categories')->controller(CategoryController::class)->middleware([
     Route::put('/{category}','update');
     Route::delete('/{category}','destroy');
 });
-Route::prefix('subCategories')->controller(SubCategoryController::class)->middleware(['auth:sanctum'])->group(function () {
+Route::prefix('sub-categories')->controller(SubCategoryController::class)->middleware(['auth:sanctum'])->group(function () {
     Route::get('/','index');
-    // Route::get('/{category}','show');
+    Route::get('/{subCategory}','show');
     Route::post('/','store');
-    // Route::put('/{category}','update');
-    // Route::delete('/{category}','destroy');
+    Route::put('/{subCategory}','update');
+    Route::delete('/{subCategory}','destroy');
 });
