@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Transaction\TransactionCreateRequest;
+use App\Services\Transaction\TransactionService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class TransactionController extends Controller {
+
+    public function __construct(private TransactionService $transactionService) {
+    }
     /**
      * Display a listing of the resource.
      */
@@ -13,18 +18,8 @@ class TransactionController extends Controller {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create() {
-        return Inertia::render('Transaction');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request) {
-        //
+    public function store(TransactionCreateRequest $request) {
+        
         dd($request->all());
     }
 
