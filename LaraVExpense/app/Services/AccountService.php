@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Dtos\Account\AccountCreateDTO;
+use App\Dtos\Account\AccountDTO;
 use App\Models\Account;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -19,14 +20,14 @@ class AccountService
         //
     }
 
-    public function create(AccountCreateDTO $accountCreateDTO) {
+    public function create(AccountDTO $accountDTO) {
         $account = Account::query()->create([
             'userID' => Auth::id(),
-            'slug' => Str::slugify($accountCreateDTO->name . (string) rand(10,100)),
-            'name' => $accountCreateDTO->name,
-            'accountNo' => $accountCreateDTO->accountNo,
-            'openingBalance' => $accountCreateDTO->openingBalance,
-            'description' => $accountCreateDTO->description,
+            'slug' => Str::slugify($accountDTO->name . (string) rand(10,100)),
+            'name' => $accountDTO->name,
+            'accountNo' => $accountDTO->accountNo,
+            'openingBalance' => $accountDTO->openingBalance,
+            'description' => $accountDTO->description,
         ]);
 
         return $account;
@@ -50,8 +51,8 @@ class AccountService
         return $accounts;
     }
 
-    public function update(Account $account, AccountCreateDTO $accountCreateDTO) {
-        $data = array_filter($accountCreateDTO->toArray(), fn ($value) => $value !== null);
+    public function update(Account $account, AccountDTO $accountDTO) {
+        $data = array_filter($accountDTO->toArray(), fn ($value) => $value !== null);
 
         $account->update($data);
 

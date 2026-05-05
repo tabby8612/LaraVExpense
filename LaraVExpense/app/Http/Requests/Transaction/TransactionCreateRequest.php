@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Transaction;
 
 use App\Dtos\Transaction\TransactionDTO;
+use Carbon\Carbon;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,7 @@ class TransactionCreateRequest extends FormRequest
             'categoryID' => ['required', 'numeric', Rule::exists('categories', 'id')->where('createdBy', Auth::id())->whereNull('deleted_at')],
             'subCategoryID' => ['required', 'numeric', Rule::exists('sub_categories', 'id')->where('createdBy', Auth::id())->whereNull('deleted_at')],
             'note' => ['required', 'string', 'max:200'],
-            'date' => ['required', 'date']
+            'date' => ['required', Rule::date()->format('d-m-Y')]
         ];
     }
 
@@ -47,14 +48,14 @@ class TransactionCreateRequest extends FormRequest
             'type' => $data['type'],
             'userID' => Auth::id(),
             'name' => $data['name'],
-            'slug' => Str::slug($data['slug'] . '-' . (string) rand(1,1000)),
+            'slug' => Str::slug($data['name'] . '-' . (string) rand(1,1000)),
             'referenceNo' => $data['referenceNo'] ?? '',
-            'amount' => $data['amount'],
-            'accountID' => $data['accountID'],
-            'categoryID' => $data['categoryID'],
-            'subCategoryID' => $data['subCategoryID'],
+            'amount' => (int) $data['amount'],
+            'accountID' => (int) $data['accountID'],
+            'categoryID' => (int) $data['categoryID'],
+            'subCategoryID' => (int) $data['subCategoryID'],
             'note' => $data['note'],
-            'date' => $data['date'],
+            'date' => Carbon::parse($data['date'])->startOfDay(),
         ]);
     }
 }

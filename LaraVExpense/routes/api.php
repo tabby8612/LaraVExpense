@@ -4,8 +4,7 @@ use App\Http\Controllers\Account\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\SubCategory\SubCategoryController;
-use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Transaction\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,8 +43,8 @@ Route::prefix('sub-categories')->controller(SubCategoryController::class)->middl
 });
 
 Route::prefix('transactions')->controller(TransactionController::class)->middleware(['auth:sanctum'])->group(function () {
-    // Route::get('/','index');
-    // Route::get('/{transaction:slug}','show');
+    Route::get('/','index');
+    Route::get('/{transaction:slug}','show');
     Route::post('/','store');
     // Route::put('/{subCategory}','update');
     // Route::delete('/{subCategory}','destroy');

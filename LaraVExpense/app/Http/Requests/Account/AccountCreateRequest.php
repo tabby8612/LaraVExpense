@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Account;
 
-use App\Dtos\Account\AccountCreateDTO;
 use App\Dtos\Account\AccountDTO;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
